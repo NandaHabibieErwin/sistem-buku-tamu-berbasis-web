@@ -13,19 +13,26 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 Route::get('/bukutamu', [App\Http\Controllers\HomeController::class, 'index'])->name('bukutamu');
 Route::get('/datatamu', [App\Http\Controllers\tamuController::class, 'index'])->name('datatamu');
 Auth::routes();
 
-
+Route::get('/', function () {
+    return view('dashboard');
+});
 
 
 Route::POST('/send-whatsapp', [WhatsappController::class, 'sendWhatsAppMessage']);
+Route::POST('/whatsapp/{id_tamu}/{new_status}', 'WhatsAppController@updateStatus');
+Route::POST('/whatsapp/{id_tamu}/{new_status}', [WhatsappController::class, 'updateStatus']);
+
 
 Route::get('/menu', function () {
     return view('layout.menu');
 });
-Route::get('/index', 'App\Http\Controllers\FormulirController@index')->name('index');
+
 
 Route::resource('form', 'App\Http\Controllers\tamuController');
 

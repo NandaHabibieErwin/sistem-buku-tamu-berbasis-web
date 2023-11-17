@@ -3,21 +3,21 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index" class="logo logo-dark">
+        <a href="/" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" height="26">
+                <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" height="45">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="28">
+                <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="60">
             </span>
         </a>
 
-        <a href="index" class="logo logo-light">
+        <a href="/" class="logo logo-light">
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="30">
+                <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="60">
             </span>
             <span class="logo-sm">
-                <img src="{{ URL::asset('build/images/logo-light-sm.png') }}" alt="" height="26">
+                <img src="{{ URL::asset('build/images/logo-light-sm.png') }}" alt="" height="45">
             </span>
         </a>
     </div>
@@ -35,26 +35,28 @@
                 <li class="menu-title" data-key="t-menu">Dashboard</li>
 
                 <li>
-                    <a href="apps-file-manager">
+                    <a href="{{ url('/') }}">
                         <i class="bx bx-home-alt icon nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
 
-                <li class="menu-title" data-key="t-applications">Applications</li>
+                <li class="menu-title" data-key="t-applications">Tamu</li>
 
                 <li>
                     <a href="{{ route('bukutamu') }}">
                         <i class="bx bx-file-find icon nav-icon"></i>
                         <span class="menu-item" data-key="t-filemanager">Buku Tamu</span>
                     </a>
+                </li>
+                <li>
                     <a href="{{ route('department') }}">
                     <i class="bx bx-user-circle icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-contacts">Departement</span>
+                        <span class="menu-item" data-key="t-filemanager">Departement</span>
                     </a>
                 </li>
 
-                <li class="menu-title" data-key="t-applications">Applications</li>
+                <li class="menu-title" data-key="t-applications">Admin</li>
 
                 <li>
                     <a href="{{ route('datatamu') }}">

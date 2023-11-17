@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://mahasiswa.pcr.ac.id/dashboard -->
+<html lang="en" style="--bs-warning: #dddddd; --bs-light-warning: #ffdb99; --bs-warning-active: #cc8400; --bs-warning-rgb: 255,165,0;"><!--begin::Head--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="">--><base href=".">
+    <title>Mahasiswa | Dashboard</title>
+    
+<meta name="description" content="">
+<meta name="keywords" content="politeknik, caltex, riau, politeknik caltex, pcr, mahasiswa, akademik">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sistem Informasi Mahasiswa Politeknik Caltex Riau">
+<meta property="og:site_name" content="Sistem Informasi Mahasiswa Politeknik Caltex Riau">
+<link rel="shortcut icon" href="https://mahasiswa.pcr.ac.id/assets/media/logos/favicon.ico">
+<!--begin::Fonts-->
+<link rel="stylesheet" href="./Mahasiswa _ Dashboard_files/css">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:wght@300,400,500,600,700&display=swap" /> -->
+<!--end::Fonts-->
+
+<!--begin::Global Stylesheets Bundle(used by all pages)-->
+<link href="./Mahasiswa _ Dashboard_files/plugins.bundle.css" rel="stylesheet" type="text/css">
+<link href="./Mahasiswa _ Dashboard_files/style.bundle.css" rel="stylesheet" type="text/css">
+<link href="./Mahasiswa _ Dashboard_files/prismjs.bundle.css" rel="stylesheet" type="text/css">
+<!--end::Global Stylesheets Bundle-->
+
+    <!--begin::Page Vendor Stylesheets(used by this page)-->
+    <link href="./Mahasiswa _ Dashboard_files/fullcalendar.bundle.css" rel="stylesheet" type="text/css">
+    <!--end::Page Vendor Stylesheets-->
+
+<script>
+    document.documentElement.style.setProperty('--bs-warning', '#dddddd');
+    document.documentElement.style.setProperty('--bs-light-warning', '#ffdb99');
+    document.documentElement.style.setProperty('--bs-warning-active', '#cc8400');
+    document.documentElement.style.setProperty('--bs-warning-rgb', '255,165,0');
+</script>
+<style>
+    /* .menu-title {
+        font-size: 13px !important;
+    } */
+</style><style type="text/css">.apexcharts-canvas {
+  position: relative;
+  user-select: none;
+  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+}
+
+
+/* scrollbar is not visible by default for legend, hence forcing the visibility */
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+.apexcharts-inner {
+  position: relative;
+}
+
+.apexcharts-text tspan {
+  font-family: inherit;
+}
+
+.legend-mouseover-inactive {
+  transition: 0.15s ease all;
+  opacity: 0.20;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0;
+}
+
+.apexcharts-tooltip {
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px #999;
+  cursor: default;
+  font-size: 14px;
+  left: 62px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 12;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #e3e3e3;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: #fff;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit;
+}
+
+
+.apexcharts-tooltip-title {
+  padding: 6px;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #ECEFF1;
+  border-bottom: 1px solid #ddd;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #333;
+}
+
+.apexcharts-tooltip-text-y-value,
+.apexcharts-tooltip-text-goals-value,
+.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.apexcharts-tooltip-text-y-label:empty,
+.apexcharts-tooltip-text-y-value:empty,
+.apexcharts-tooltip-text-goals-label:empty,
+.apexcharts-tooltip-text-goals-value:empty,
+.apexcharts-tooltip-text-z-value:empty {
+  display: none;
+}
+
+.apexcharts-tooltip-text-y-value,
+.apexcharts-tooltip-text-goals-value,
+.apexcharts-tooltip-text-z-value {
+  font-weight: 600;
+}
+
+.apexcharts-tooltip-text-goals-label, 
+.apexcharts-tooltip-text-goals-value {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-goals-group, 
+.apexcharts-tooltip-text-goals-label, 
+.apexcharts-tooltip-text-goals-value {
+  display: flex;
+}
+.apexcharts-tooltip-text-goals-label:not(:empty),
+.apexcharts-tooltip-text-goals-value:not(:empty) {
+  margin-top: -6px;
+}
+
+.apexcharts-tooltip-marker {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 0px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 0 10px;
+  display: none;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active,
+.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 4px;
+}
+
+.apexcharts-tooltip-series-group-hidden {
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0 !important;
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-box, .apexcharts-custom-tooltip {
+  padding: 4px 8px;
+}
+
+.apexcharts-tooltip-boxPlot {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.apexcharts-tooltip-box>div {
+  margin: 4px 0;
+}
+
+.apexcharts-tooltip-box span.value {
+  font-weight: bold;
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px;
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777;
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.apexcharts-xaxistooltip {
+  opacity: 0;
+  padding: 9px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-xaxistooltip:after,
+.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-xaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.apexcharts-xaxistooltip-bottom:after,
+.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%;
+}
+
+.apexcharts-xaxistooltip-top:after,
+.apexcharts-xaxistooltip-top:before {
+  top: 100%;
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: #ECEFF1;
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: #ECEFF1
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-yaxistooltip {
+  opacity: 0;
+  padding: 4px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+}
+
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-yaxistooltip:after,
+.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-top: -6px;
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-top: -7px;
+}
+
+.apexcharts-yaxistooltip-left:after,
+.apexcharts-yaxistooltip-left:before {
+  left: 100%;
+}
+
+.apexcharts-yaxistooltip-right:after,
+.apexcharts-yaxistooltip-right:before {
+  right: 100%;
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1;
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none;
+}
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,
+.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0;
+}
+
+.apexcharts-selection-rect {
+  cursor: move;
+}
+
+.svg_select_boundingRect, .svg_select_points_rot {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.apexcharts-selection-rect + g .svg_select_boundingRect,
+.apexcharts-selection-rect + g .svg_select_points_rot {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.apexcharts-selection-rect + g .svg_select_points_l,
+.apexcharts-selection-rect + g .svg_select_points_r {
+  cursor: ew-resize;
+  opacity: 1;
+  visibility: visible;
+}
+
+.svg_select_points {
+  fill: #efefef;
+  stroke: #333;
+  rx: 2;
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-selection-icon,
+.apexcharts-menu-icon,
+.apexcharts-toolbar-custom-icon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  color: #6E8192;
+  text-align: center;
+}
+
+.apexcharts-zoom-icon svg,
+.apexcharts-zoomin-icon svg,
+.apexcharts-zoomout-icon svg,
+.apexcharts-reset-icon svg,
+.apexcharts-menu-icon svg {
+  fill: #6E8192;
+}
+
+.apexcharts-selection-icon svg {
+  fill: #444;
+  transform: scale(0.76)
+}
+
+.apexcharts-theme-dark .apexcharts-zoom-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+.apexcharts-theme-dark .apexcharts-reset-icon svg,
+.apexcharts-theme-dark .apexcharts-pan-icon svg,
+.apexcharts-theme-dark .apexcharts-selection-icon svg,
+.apexcharts-theme-dark .apexcharts-menu-icon svg,
+.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {
+  fill: #f3f4f5;
+}
+
+.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+  fill: #008FFB;
+}
+
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+.apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+.apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+  fill: #333;
+}
+
+.apexcharts-selection-icon,
+.apexcharts-menu-icon {
+  position: relative;
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px;
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon {
+  transform: scale(0.85);
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  transform: scale(0.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px;
+}
+
+.apexcharts-pan-icon {
+  transform: scale(0.62);
+  position: relative;
+  left: 1px;
+  top: 0px;
+}
+
+.apexcharts-pan-icon svg {
+  fill: #fff;
+  stroke: #6E8192;
+  stroke-width: 2;
+}
+
+.apexcharts-pan-icon.apexcharts-selected svg {
+  stroke: #008FFB;
+}
+
+.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+  stroke: #333;
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  max-width: 176px;
+  text-align: right;
+  border-radius: 3px;
+  padding: 0px 6px 2px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apexcharts-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  opacity: 0;
+  min-width: 110px;
+  transition: 0.15s ease all;
+  pointer-events: none;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-menu-item {
+  padding: 6px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: #eee;
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1;
+  }
+}
+
+.apexcharts-datalabel.apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-pie-label,
+.apexcharts-datalabels,
+.apexcharts-datalabel,
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value {
+  cursor: default;
+  pointer-events: none;
+}
+
+.apexcharts-pie-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.apexcharts-canvas .apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-hide .apexcharts-series-points {
+  opacity: 0;
+}
+
+.apexcharts-gridline,
+.apexcharts-annotation-rect,
+.apexcharts-tooltip .apexcharts-marker,
+.apexcharts-area-series .apexcharts-area,
+.apexcharts-line,
+.apexcharts-zoom-rect,
+.apexcharts-toolbar svg,
+.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-radar-series path,
+.apexcharts-radar-series polygon {
+  pointer-events: none;
+}
+
+
+/* markers */
+
+.apexcharts-marker {
+  transition: 0.15s ease all;
+}
+
+@keyframes opaque {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Resize generated styles */
+
+@keyframes resizeanim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.resize-triggers,
+.resize-triggers>div,
+.contract-trigger:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize-triggers>div {
+  background: #eee;
+  overflow: auto;
+}
+
+.contract-trigger:before {
+  width: 200%;
+  height: 200%;
+}</style></head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" class="page-loading-enabled bg-light" style="background-color: #f2f4f7;">
+    <!--begin::loader-->
+    <div class="page-loader flex-column">
+        <span class="spinner-border text-primary" role="status"></span>
+        <span class="text-muted fs-6 fw-bold mt-5">Loading...</span>
+    </div>
+    <!--end::Loader-->
+    <!--begin::Main-->
+    <!--begin::Root-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Aside-->
+            <div id="kt_aside" class="aside pt-7 pb-4 pb-lg-7 pt-lg-17" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:&#39;200px&#39;, &#39;300px&#39;: &#39;250px&#39;}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
+    <!--begin::Brand-->
+    <div class="aside-logo flex-column-auto px-9 mb-9 mb-lg-17 mx-auto" id="kt_aside_logo">
+        <!--begin::Logo-->
+        <a href="https://mahasiswa.pcr.ac.id/">
+            <img alt="Logo" src="./Mahasiswa _ Dashboard_files/logo-v.png" style="max-width:200px;" class=" logo">
+        </a>
+        <!--end::Logo-->
+    </div>
+    <!--end::Brand-->
+    <!--begin::Aside user-->
+    <div class="aside-user mb-5 mb-lg-10" id="kt_aside_user">
+        <div class="d-flex align-items-center flex-column">
+            <div class="symbol symbol-75px mb-4">
+                <a href="https://mahasiswa.pcr.ac.id/profile">
+                    <img src="./Mahasiswa _ Dashboard_files/profile-pic.jpg" alt="" style="height: 150px;border-radius: 50%; border-width: 5px; border-style: solid; border-color: white;">
+                </a>
+            </div>
+            <div class="text-center">
+                <a href="https://mahasiswa.pcr.ac.id/profile" class="text-gray-900 text-hover-primary fs-4 fw-boldest">NANDA HABIBIE ERWIN</a>
+                <span class="text-gray-600 fw-bold d-block fs-7 mb-1">2257301100 <i class="bi bi-check-circle-fill text-success" title="data verified"></i></span>
+            </div>
+        </div>
+    </div>
+    <!--end::Aside user-->
+    <!--begin::Aside menu-->
+    <div class="aside-menu flex-column-fluid ps-3 ps-lg-5 pe-1 mb-9" id="kt_aside_menu">
+        <!--begin::Aside Menu-->
+        <div class="w-100 hover-scroll-overlay-y pe-2 me-2" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_user, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu, #kt_aside_menu_wrapper" data-kt-scroll-offset="0" style="height: 305px;">
+            <!--begin::Menu-->
+            <div class="menu menu-column menu-rounded fw-bold" id="#kt_aside_menu" data-kt-menu="true">
+                <div class="menu-item">
+                    <a class="menu-link active" href="https://mahasiswa.pcr.ac.id/dashboard">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </div>
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Akademik</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/presensi">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Presensi</span>
+                            </a>
+                        </div>
+                                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Kompensasi</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion menu-active-bg ">
+                                <div class="menu-item">
+                                    <a class="menu-link " href="https://mahasiswa.pcr.ac.id/kompensasi/kompensasi">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Kompensasi</span>
+                                    </a>
+                                    <a class="menu-link " href="https://mahasiswa.pcr.ac.id/kompensasi/lowongan_kompensasi">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Lowongan Kompensasi</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/praktikum_susulan">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Praktikum Susulan</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/nilai">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Nilai</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/carry_over">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Carry Over</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/tak">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">TAK</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Kerja Praktek</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/kerja_praktek">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Overview</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Proyek Akhir</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/bank_judul">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Bank Judul</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/pengajuan_judul">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pengajuan Judul</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/bimbingan">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Bimbingan</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/pengajuan_sidang">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pengajuan Sidang</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Keuangan</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/tagihan">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Tagihan</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link " href="https://mahasiswa.pcr.ac.id/pembayaran">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pembayaran</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link " href="https://mahasiswa.pcr.ac.id/layanan_akademik">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Layanan Akademik</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link " href="https://mahasiswa.pcr.ac.id/yudisium">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Yudisium</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link " href="https://mahasiswa.pcr.ac.id/registrasi">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                            <span class="svg-icon svg-icon-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black"></path>
+                                    <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black"></path>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Registrasi</span>
+                    </a>
+                </div>
+            </div>
+            <!--end::Menu-->
+        </div>
+        <!--end::Aside Menu-->
+    </div>
+    <!--end::Aside menu-->
+    <!--begin::Footer-->
+    <div class="aside-footer flex-column-auto px-6 px-lg-9" id="kt_aside_footer">
+        <!--begin::User panel-->
+        <div class="d-flex flex-stack ms-7">
+            <!--begin::Link-->
+            <a href="https://mahasiswa.pcr.ac.id/auth/logout" class="btn btn-sm btn-icon btn-active-color-primary btn-icon-gray-600 btn-text-gray-600">
+                <!--begin::Svg Icon | path: icons/duotune/arrows/arr076.svg-->
+                <span class="svg-icon svg-icon-1 me-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect opacity="0.3" width="12" height="2" rx="1" transform="matrix(-1 0 0 1 15.5 11)" fill="black"></rect>
+                        <path d="M13.6313 11.6927L11.8756 10.2297C11.4054 9.83785 11.3732 9.12683 11.806 8.69401C12.1957 8.3043 12.8216 8.28591 13.2336 8.65206L16.1592 11.2526C16.6067 11.6504 16.6067 12.3496 16.1592 12.7474L13.2336 15.3479C12.8216 15.7141 12.1957 15.6957 11.806 15.306C11.3732 14.8732 11.4054 14.1621 11.8756 13.7703L13.6313 12.3073C13.8232 12.1474 13.8232 11.8526 13.6313 11.6927Z" fill="black"></path>
+                        <path d="M8 5V6C8 6.55228 8.44772 7 9 7C9.55228 7 10 6.55228 10 6C10 5.44772 10.4477 5 11 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H11C10.4477 19 10 18.5523 10 18C10 17.4477 9.55228 17 9 17C8.44772 17 8 17.4477 8 18V19C8 20.1046 8.89543 21 10 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H10C8.89543 3 8 3.89543 8 5Z" fill="#C4C4C4"></path>
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+                <!--begin::Major-->
+                <span class="d-flex flex-shrink-0 fw-bolder">Log Out</span>
+                <!--end::Major-->
+            </a>
+            <!--end::Link-->
+        </div>
+        <!--end::User panel-->
+    </div>
+    <!--end::Footer-->
+</div>
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                <!--begin::Header-->
+                <div id="kt_header" class="header">
+                    <!--begin::Container-->
+                    <div class="container-fluid d-flex align-items-center flex-wrap justify-content-between" id="kt_header_container">
+                        <!--begin::Page title-->
+                        <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-2 pb-5 pb-lg-0 pt-7 pt-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: &#39;#kt_content_container&#39;, lg: &#39;#kt_header_container&#39;}">
+    <!--begin::Heading-->
+    <h1 class="d-flex flex-column text-dark fw-bolder my-0 fs-1">Dashboard        <ul class="breadcrumb breadcrumb-dot fw-bold fs-base my-1">
+            <li class="breadcrumb-item text-muted">
+                <a href="https://mahasiswa.pcr.ac.id/dashboard" class="text-muted">Home</a>
+            </li>
+                                            <li class="breadcrumb-item text-dark"><a href="https://mahasiswa.pcr.ac.id/dashboard" class="text-dark">Dashboard</a></li>
+                    </ul>
+    </h1>
+    <!--end::Heading-->
+</div>                        <!--end::Page title=-->
+                        <!--begin::Wrapper-->
+                        <div class="d-flex d-lg-none align-items-center ms-n3 me-2">
+                            <!--begin::Aside mobile toggle-->
+                            <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
+                                <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
+                                <span class="svg-icon svg-icon-1 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black"></path>
+                                        <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black"></path>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </div>
+                            <!--end::Aside mobile toggle-->
+                            <!--begin::Logo-->
+                            <a href="https://mahasiswa.pcr.ac.id/dashboard" class="d-flex align-items-center">
+                                <img alt="Logo" src="./Mahasiswa _ Dashboard_files/logo-m.png" class="h-35px">
+                            </a>
+                            <!--end::Logo-->
+                        </div>
+                        <!--end::Wrapper-->
+                        <!--begin::Topbar-->
+                        <div class="d-flex align-items-center flex-shrink-0">
+        <!--end::Search-->
+    <!--begin::Activities-->
+    <div class="d-flex align-items-center ms-3 ms-lg-4">
+        <!--begin::Drawer toggle-->
+        <div class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary w-40px h-40px" id="kt_activities_toggle">
+            <!--begin::Svg Icon | path: icons/duotune/general/gen007.svg-->
+            <span class="svg-icon svg-icon-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"></path>
+                    <path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black"></path>
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+        </div>
+        <!--end::Drawer toggle-->
+    </div>
+    <!--end::Activities-->
+    <!--begin::Chat-->
+    <div class="d-flex d-none align-items-center ms-3 ms-lg-4">
+        <!--begin::Drawer wrapper-->
+        <div class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary position-relative w-40px h-40px" id="kt_drawer_chat_toggle">
+            <!--begin::Svg Icon | path: icons/duotune/communication/com003.svg-->
+            <span class="svg-icon svg-icon-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>
+                    <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+            <!--begin::Bullet-->
+            <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+            <!--end::Bullet-->
+        </div>
+        <!--end::Drawer wrapper-->
+    </div>
+    <!--end::Chat-->
+    <!--begin::Sidebar Toggler-->
+    <!--end::Sidebar Toggler-->
+</div>                        <!--end::Topbar-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Header-->
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <!--begin::Container-->
+                    <div class="container-fluid" id="kt_content_container">
+                        <style>
+	.chartdiv {
+		width: 100%;
+		height: 300px;
+	}
+</style>
+<div class="alert d-none" role="alert" id="spAlert">
+</div>
+<div class="row">
+	<div class="col-xxl-3 col-md-6 mb-4">
+		<div class="card shadow">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<span class="svg-icon svg-icon-primary svg-icon-2tx">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="black"></path>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="black"></path>
+						</svg>
+					</span>
+					<div class="d-flex flex-column mx-4">
+						<span class="fw-bolder fs-3">DOKUMEN MAHASISWA <div class="text-dark fs-7" id="">
+																	<a href="https://mahasiswa.pcr.ac.id/dashboard#" class="link-success dokumen_mahasiswa">Verified&nbsp;<i class="bi bi-check-circle-fill text-success"></i></a>
+															</div></span>
+						<!-- Dalam proses verifikasi &nbsp;<i class="bi bi-hourglass-split"></i></div></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xxl-2 col-md-6 mb-4">
+		<div class="card shadow">
+			<div class="card-body" id="kompenBadgeBody">
+				<div class="d-flex align-items-center">
+					<span class="svg-icon svg-icon-primary svg-icon-2tx" id="kompenBadgeIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path opacity="0.3" d="M20.9 12.9C20.3 12.9 19.9 12.5 19.9 11.9C19.9 11.3 20.3 10.9 20.9 10.9H21.8C21.3 6.2 17.6 2.4 12.9 2V2.9C12.9 3.5 12.5 3.9 11.9 3.9C11.3 3.9 10.9 3.5 10.9 2.9V2C6.19999 2.5 2.4 6.2 2 10.9H2.89999C3.49999 10.9 3.89999 11.3 3.89999 11.9C3.89999 12.5 3.49999 12.9 2.89999 12.9H2C2.5 17.6 6.19999 21.4 10.9 21.8V20.9C10.9 20.3 11.3 19.9 11.9 19.9C12.5 19.9 12.9 20.3 12.9 20.9V21.8C17.6 21.3 21.4 17.6 21.8 12.9H20.9Z" fill="black"></path>
+							<path d="M16.9 10.9H13.6C13.4 10.6 13.2 10.4 12.9 10.2V5.90002C12.9 5.30002 12.5 4.90002 11.9 4.90002C11.3 4.90002 10.9 5.30002 10.9 5.90002V10.2C10.6 10.4 10.4 10.6 10.2 10.9H9.89999C9.29999 10.9 8.89999 11.3 8.89999 11.9C8.89999 12.5 9.29999 12.9 9.89999 12.9H10.2C10.4 13.2 10.6 13.4 10.9 13.6V13.9C10.9 14.5 11.3 14.9 11.9 14.9C12.5 14.9 12.9 14.5 12.9 13.9V13.6C13.2 13.4 13.4 13.2 13.6 12.9H16.9C17.5 12.9 17.9 12.5 17.9 11.9C17.9 11.3 17.5 10.9 16.9 10.9Z" fill="black"></path>
+						</svg>
+					</span>
+					<div class="d-flex flex-column mx-4">
+						<span class="fw-bolder fs-4" id="kompenBadgeText">KOMPEN <a href="https://mahasiswa.pcr.ac.id/kompensasi/kompensasi" title="Kompen Akademik (Tidak Hadir Kuliah)" class="fs-7 text-primary" id="kompenBadgeSubtext">AKAD</a>
+							<div class="text-dark fs-7" id="kompen"><span class="text-danger">0 Jam <i class="bi bi-x-circle-fill text-danger" title="Kompen anda belum lunas"></i></span></div>						</span>
+						<!-- Dalam proses verifikasi &nbsp;<i class="bi bi-hourglass-split"></i></div></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xxl-2 col-md-6 mb-4">
+		<div class="card shadow">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<span class="svg-icon svg-icon-primary svg-icon-2tx">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path opacity="0.3" d="M20.9 12.9C20.3 12.9 19.9 12.5 19.9 11.9C19.9 11.3 20.3 10.9 20.9 10.9H21.8C21.3 6.2 17.6 2.4 12.9 2V2.9C12.9 3.5 12.5 3.9 11.9 3.9C11.3 3.9 10.9 3.5 10.9 2.9V2C6.19999 2.5 2.4 6.2 2 10.9H2.89999C3.49999 10.9 3.89999 11.3 3.89999 11.9C3.89999 12.5 3.49999 12.9 2.89999 12.9H2C2.5 17.6 6.19999 21.4 10.9 21.8V20.9C10.9 20.3 11.3 19.9 11.9 19.9C12.5 19.9 12.9 20.3 12.9 20.9V21.8C17.6 21.3 21.4 17.6 21.8 12.9H20.9Z" fill="black"></path>
+							<path d="M16.9 10.9H13.6C13.4 10.6 13.2 10.4 12.9 10.2V5.90002C12.9 5.30002 12.5 4.90002 11.9 4.90002C11.3 4.90002 10.9 5.30002 10.9 5.90002V10.2C10.6 10.4 10.4 10.6 10.2 10.9H9.89999C9.29999 10.9 8.89999 11.3 8.89999 11.9C8.89999 12.5 9.29999 12.9 9.89999 12.9H10.2C10.4 13.2 10.6 13.4 10.9 13.6V13.9C10.9 14.5 11.3 14.9 11.9 14.9C12.5 14.9 12.9 14.5 12.9 13.9V13.6C13.2 13.4 13.4 13.2 13.6 12.9H16.9C17.5 12.9 17.9 12.5 17.9 11.9C17.9 11.3 17.5 10.9 16.9 10.9Z" fill="black"></path>
+						</svg>
+					</span>
+					<div class="d-flex flex-column mx-4">
+						<span class="fw-bolder fs-3">KOMPEN <a href="https://mahasiswa.pcr.ac.id/kompensasi/kompensasi" title="Kompen Indisipliner" class="fs-7 text-danger">INDIS</a>
+							<!-- <div class="text-dark fs-7" id="kompen_indis">-</div> -->
+							<div class="text-dark fs-7" id="kompen_indis"><span class="text-danger">0 Jam <i class="bi bi-x-circle-fill text-danger" title="Kompen anda belum lunas"></i></span></div>						</span>
+						<!-- Dalam proses verifikasi &nbsp;<i class="bi bi-hourglass-split"></i></div></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xxl-2 col-md-6 mb-4">
+		<div class="card shadow">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<span class="svg-icon svg-icon-primary svg-icon-2tx">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path opacity="0.3" d="M22 19V17C22 16.4 21.6 16 21 16H8V3C8 2.4 7.6 2 7 2H5C4.4 2 4 2.4 4 3V19C4 19.6 4.4 20 5 20H21C21.6 20 22 19.6 22 19Z" fill="black"></path>
+							<path d="M20 5V21C20 21.6 19.6 22 19 22H17C16.4 22 16 21.6 16 21V8H8V4H19C19.6 4 20 4.4 20 5ZM3 8H4V4H3C2.4 4 2 4.4 2 5V7C2 7.6 2.4 8 3 8Z" fill="black"></path>
+						</svg>
+					</span>
+					<div class="d-flex flex-column mx-4">
+						<span class="fw-bolder fs-3">POIN TAK</span>
+						<a href="https://mahasiswa.pcr.ac.id/tak" class="text-dark fw-bolder fs-7"><span id="tak"><span class="text-primary">43</span></span><small class="text-primary fw-bolder"> / 75</small></a>						<!-- Dalam proses verifikasi &nbsp;<i class="bi bi-hourglass-split"></i></div></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="col-xxl-3 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <span class="svg-icon svg-icon-primary svg-icon-2tx">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6.5 11C8.98528 11 11 8.98528 11 6.5C11 4.01472 8.98528 2 6.5 2C4.01472 2 2 4.01472 2 6.5C2 8.98528 4.01472 11 6.5 11Z" fill="black" />
+                            <path opacity="0.3" d="M13 6.5C13 4 15 2 17.5 2C20 2 22 4 22 6.5C22 9 20 11 17.5 11C15 11 13 9 13 6.5ZM6.5 22C9 22 11 20 11 17.5C11 15 9 13 6.5 13C4 13 2 15 2 17.5C2 20 4 22 6.5 22ZM17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22Z" fill="black" />
+                        </svg>
+                    </span>
+                    <div class="d-flex flex-column mx-4">
+                        <span class="fw-bolder fs-3">ISO & MATRIKULASI <div class="text-dark fs-7" id=""><span class="fst-italic"><span class="spinner-border spinner-border-sm align-middle ms-2"></span> &nbsp;Loading...</span></div></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+	</div>
+	<div class="row">
+	<input type="text" id="clipboard" value="" style="display:none;">
+					</div>
+		<div class="row">
+		<div class="col-xxl-4 col-md-12 mb-4">
+			<div class="card shadow h-md-100" id="ip_section">
+				<div class="card-header">
+					<h3 class="card-title align-items-start flex-column">
+						<span class="card-label fw-bolder">Indeks Prestasi</span>
+					</h3>
+				</div>
+				<div class="card-body py-0">
+					<div id="chart_ipk" class="chartdiv blockui" style=""><div style="position: relative; width: 100%; height: 100%;"><div aria-hidden="true" style="position: absolute; width: 296px; height: 300px;"><div><canvas class="am5-layer-0" width="370" height="375" style="position: absolute; top: 0px; left: 0px; width: 296px; height: 300px;"></canvas><canvas class="am5-layer-30" width="370" height="375" style="position: absolute; top: 0px; left: 0px; width: 296px; height: 300px;"></canvas></div></div><div class="am5-html-container" style="position: absolute; pointer-events: none; overflow: hidden; width: 296px; height: 300px;"></div><div class="am5-reader-container" role="alert" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);"></div><div class="am5-focus-container" role="graphics-document" style="position: absolute; pointer-events: none; top: 0px; left: 0px; overflow: hidden; width: 296px; height: 300px;"><div role="button" aria-label="Zoom Out" aria-hidden="true" style="position: absolute; pointer-events: none; top: -2px; left: -2px; width: 4px; height: 4px;"></div></div><div class="am5-tooltip-container"></div></div></div>
+				</div>
+			</div>
+		</div>
+				<div class="col-xxl-8 col-md-12 mb-4">
+			<div class="card shadow h-md-100">
+				<div class="card-header">
+					<h3 class="card-title align-items-start flex-column">
+						<span class="card-label fw-bolder fs-3 mb-1">Matakuliah Aktif</span>
+					</h3>
+				</div>
+				<div class="card-body py-4">
+					<div id="table_semester_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="table-responsive"><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 665.662px; padding-right: 5px;"><table width="100%" class="table table-responsive table-sm table-row-dashed table-striped table-row-gray-300 align-middle min-mobile-p dataTable no-footer" style="margin-left: 0px; width: 665.662px;"><thead>
+							<tr class="fw-bolder text-muted"><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 66.5625px;">#</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 235.45px;">Matakuliah</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 89.1125px;">SKS</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 89.1125px;">Dsn</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 89.1125px;">Kelas</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 96.3125px;">%</th></tr>
+						</thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 240px; height: 240px; width: 100%;"><table width="100%" id="table_semester_0" class="table table-responsive table-sm table-row-dashed table-striped table-row-gray-300 align-middle min-mobile-p dataTable no-footer dtr-inline" style="width: 100%;"><thead>
+							<tr class="fw-bolder text-muted" style="height: 0.8px;"><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 66.5625px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">#</div></th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 235.45px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Matakuliah</div></th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 89.1125px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">SKS</div></th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 89.1125px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Dsn</div></th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 89.1125px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Kelas</div></th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 96.3125px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">%</div></th></tr>
+						</thead>
+						
+						<tbody><tr class="odd"><td class="text-center dtr-control" tabindex="0">1</td><td><span class="text-dark fw-bolder">Bahasa Inggris 3</span></td><td class=" text-center">2</td><td class=" text-center"><span class="text-dark fw-bold">BTL </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="even"><td class="text-center dtr-control" tabindex="0">2</td><td><span class="text-dark fw-bolder">Desain Pengalaman Pengguna</span></td><td class=" text-center">3</td><td class=" text-center"><span class="text-dark fw-bold">IDI </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="odd"><td class="text-center dtr-control" tabindex="0">3</td><td><span class="text-dark fw-bolder">Kewarganegaran</span></td><td class=" text-center">2</td><td class=" text-center"><span class="text-dark fw-bold">JHZ </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="even"><td class="text-center dtr-control" tabindex="0">4</td><td><span class="text-dark fw-bolder">Probabilitas dan Statistika</span></td><td class=" text-center">2</td><td class=" text-center"><span class="text-dark fw-bold">HPA </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="odd"><td class="text-center dtr-control" tabindex="0">5</td><td><span class="text-dark fw-bolder">Sistem Operasi</span></td><td class=" text-center">2</td><td class=" text-center"><span class="text-dark fw-bold">AUA </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="even"><td class="text-center dtr-control" tabindex="0">6</td><td><span class="text-dark fw-bolder">Manajemen Rantai Pasok</span></td><td class=" text-center">3</td><td class=" text-center"><span class="text-dark fw-bold">NFN </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="odd"><td class="text-center dtr-control" tabindex="0">7</td><td><span class="text-dark fw-bolder">Basis Data Lanjut</span></td><td class=" text-center">2</td><td class=" text-center"><span class="text-dark fw-bold">WNS </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr><tr class="even"><td class="text-center dtr-control" tabindex="0">8</td><td><span class="text-dark fw-bolder">Pemrograman Framework</span></td><td class=" text-center">3</td><td class=" text-center"><span class="text-dark fw-bold">MMZ </span></td><td class=" text-center"><span class="text-dark fw-bolder fs-7">2 SI A</span></td><td class=" text-center"><span class="text-success fw-bold">100%</span></td></tr></tbody>
+					</table></div></div></div><div class="row"><div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start"></div><div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end"></div></div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xxl-3 col-md-12 mb-4">
+			<div class="card shadow h-md-100">
+				<div class="card-header">
+					<h3 class="card-title align-items-start flex-column">
+						<span class="card-label fw-bolder">Grafik IPS <small class="text-muted">Index Prestasi Semester</small></span>
+					</h3>
+				</div>
+				<div class="card-body py-0">
+					<div id="chart_ipk_history" class="chartdiv blockui" style=""><div style="position: relative; width: 100%; height: 100%;"><div aria-hidden="true" style="position: absolute; width: 202px; height: 300px;"><div><canvas class="am5-layer-0" width="252" height="375" style="position: absolute; top: 0px; left: 0px; width: 202px; height: 300px;"></canvas><canvas class="am5-layer-30" width="252" height="375" style="position: absolute; top: 0px; left: 0px; width: 202px; height: 300px;"></canvas></div></div><div class="am5-html-container" style="position: absolute; pointer-events: none; overflow: hidden; width: 202px; height: 300px;"></div><div class="am5-reader-container" role="alert" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);"></div><div class="am5-focus-container" role="graphics-document" style="position: absolute; pointer-events: none; top: 0px; left: 0px; overflow: hidden; width: 202px; height: 300px;"><div role="button" aria-label="Zoom Out" aria-hidden="true" style="position: absolute; pointer-events: none; top: -2px; left: -2px; width: 4px; height: 4px;"></div></div><div class="am5-tooltip-container"><div role="tooltip" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); pointer-events: none;">3.50</div><div role="tooltip" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); pointer-events: none;">SMT-3</div></div></div></div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-xxl-5 col-md-12 mb-4">
+        <div class="card shadow h-md-100">
+            <div class="card-header">
+                <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label fw-bolder">Seminar</span>
+                </h3>
+            </div>
+            <div class="card-body py-0">
+                <div class="alert alert-dismissible bg-light-warning border border-warning d-flex flex-column flex-sm-row p-5 mb-10">
+                    <span class="svg-icon svg-icon-2hx svg-icon-warning me-4 mb-5 mb-sm-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"></path>
+                            <path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black"></path>
+                        </svg>
+                    </span>
+                    <div class="d-flex flex-column pe-0 pe-sm-10">
+                        <h5 class="mb-1">Info</h5>
+                        <ul class="mb-0">
+                            <li>Belum ada pelaksanaan seminar yang terjadwal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+		<div class="col-xxl-5 col-md-12 mb-4">
+			<div class="card shadow h-md-100">
+				<div class="card-header">
+					<h3 class="card-title align-items-start flex-column">
+						<span class="card-label fw-bolder">Pengajuan TAK</span>
+					</h3>
+				</div>
+				<div class="card-body py-0 blockui" id="latest_tak" style="max-height: 270px;overflow-y: auto;"><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Diklat Dasar Organisasi 2022</a><span class="text-muted fw-bold d-block">Berperan aktif sebagai peserta</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Workshop HITECH 5</a><span class="text-muted fw-bold d-block">Berperan aktif sebagai panitia dalam suatu kegiatan tingkat Nasional</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">HIMASISTIFO TECHNOLOGY 5</a><span class="text-muted fw-bold d-block">Berperan aktif sebagai panitia dalam suatu kegiatan tingkat Nasional</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-danger"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Wisuda Tahun 2022</a><span class="text-muted fw-bold d-block">Berperan aktif sebagai panitia dalam suatu kegiatan tingkat PCR</span></div><span class="badge badge-light-danger fs-8 fw-bolder">Ditolak</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">MUSABAQAH TILAWATIL QUR'AN 2023</a><span class="text-muted fw-bold d-block">Berperan aktif dalam organisasi kemahasiswaan UKM</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">HIMASISTIFO Festival 2023</a><span class="text-muted fw-bold d-block">Berperan aktif dalam organisasi kemahasiswaan HIMA</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-danger"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Mahasiswa Prodi SI Berprestasi Genap 2022/2023</a><span class="text-muted fw-bold d-block">Ikut serta dalam kompetisi bidang ilmiah / minat bakat</span></div><span class="badge badge-light-danger fs-8 fw-bolder">Ditolak</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Mahasiswa SI Berprestasi (Mahasiswa SI Berprestasi (Kelompok Capstone Terbaik Semester Genap Tahun Ajaran 202212023)</a><span class="text-muted fw-bold d-block">Ikut serta dalam kompetisi bidang ilmiah / minat bakat</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">GRAND OPENING STUDI ISLAM INTENSIF (SII) 2023 </a><span class="text-muted fw-bold d-block">Berperan aktif dalam organisasi kemahasiswaan UKM</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-success"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">PEMBEKALAN PEMENTOR 2023</a><span class="text-muted fw-bold d-block">Berperan aktif dalam organisasi kemahasiswaan UKM</span></div><span class="badge badge-light-success fs-8 fw-bolder">Diterima</span></div></div>
+			</div>
+		</div>
+		<div class="col-xxl-4 col-md-12 mb-4">
+			<div class="card shadow h-md-100">
+				<div class="card-header">
+					<h3 class="card-title align-items-start flex-column">
+						<span class="card-label fw-bolder">Riwayat Aktifitas</span>
+					</h3>
+				</div>
+				<div class="card-body py-0 overflow-auto">
+					<div id="latest_log" class="overflow-auto blockui" style="max-height: 270px;overflow-y: auto;"><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Add Pengajuan Layak</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN menambahkan pengajuan layanan akademik : Surat</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">10 Oct 2023 21:53:53</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Add Pengajuan Layak</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN menambahkan pengajuan layanan akademik : Surat</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">10 Oct 2023 21:49:15</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Add Pengajuan Layak</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN menambahkan pengajuan layanan akademik : Surat</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">10 Oct 2023 21:40:56</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Add Feedback Layak</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN memberikan feedback layanan akademik</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">10 Oct 2023 21:35:00</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Registrasi</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan akses halaman REGISTRASI</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">06 Oct 2023 07:58:44</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Respon Pengajuan Layak</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN menaggapi tanggapan layanan akademik</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">05 Oct 2023 10:55:15</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Add Pengajuan Layak</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN menambahkan pengajuan layanan akademik : Surat</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">04 Oct 2023 20:49:47</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">21 Sep 2023 14:03:27</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Logout Mahasiswa</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan logout sistem</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">20 Sep 2023 15:34:11</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Registrasi</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan akses halaman REGISTRASI</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">24 Aug 2023 15:28:39</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Registrasi</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan registrasi semester T.A.2023/2024 SMT-3</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">24 Aug 2023 15:28:34</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Registrasi</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan akses halaman REGISTRASI</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">24 Aug 2023 15:28:13</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Update Data Diri</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan update data diri pada periode registrasi T.A.2023/2024 Periode Ganjil</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">24 Aug 2023 15:28:00</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Registrasi</a><span class="text-muted fw-bold d-block">2257301100 - NANDA HABIBIE ERWIN melakukan akses halaman REGISTRASI</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">24 Aug 2023 15:27:08</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">24 Aug 2023 15:04:46</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">08 Aug 2023 16:32:46</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">08 Aug 2023 12:03:20</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">07 Aug 2023 21:31:41</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">07 Aug 2023 12:04:07</span></div><div class="d-flex align-items-center mb-2"><span class="bullet bullet-vertical h-40px bg-primary"></span><div class="flex-grow-1 mx-5"><a href="https://mahasiswa.pcr.ac.id/dashboard#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Login Orang Tua</a><span class="text-muted fw-bold d-block">Melakukan Login Orang Tua</span></div><span class="badge badge-secondary fs-8 fw-bolder fst-italic">06 Aug 2023 21:52:22</span></div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" id="modalDokumen">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Form Dokumen Mahasiswa</h5>
+				</div>
+				<div class="modal-body px-5">
+					<div class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">
+						<span class="svg-icon svg-icon-2hx svg-icon-primary me-4 mb-5 mb-sm-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"></path>
+								<path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black"></path>
+							</svg>
+						</span>
+						<div class="d-flex flex-column pe-0 pe-sm-10">
+							<h5 class="mb-1">Info</h5>
+							<ul class="mb-0">
+								<li>Mohon dokumen yang diupload adalah hasil scan dari dokumen yang sebenarnya</li>
+								<li>Dokumen akan digunakan sebagai referensi dari kebutuhan dari administrasi di Politeknik Caltex Riau, seperti <span class="fw-bolder text-danger">transkrip nilai, pelaporan di PD DIKTI, ijazah serta dokumen lainnya</span></li>
+								<li class="fw-bolder text-danger">Data yang diisi harus data yang sebenar-benarnya dan sesuai dengan dokumen yang dilampirkan</li>
+								<li class="fw-bolder text-danger">Perhatikan detail Huruf Besar/Huruf Kecil, Singkatan, Spasi, Apostrophe ('), Titik (.), dan detail lainnya.</li>
+							</ul>
+						</div>
+					</div>
+					<form action="https://mahasiswa.pcr.ac.id/dashboard" id="modalDokumen_form" class="form" method="post" accept-charset="utf-8">
+<input type="hidden" name="mahasiswa_security" value="38b937065fe19c7b95aa74651233ffdb">                           
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="mb-5">
+																			<label class="form-label required">Ijazah SMA/SMK/MA/Sederajat</label>
+																		<span class="message_ijazah"></span>&nbsp;
+									<div class="row">
+										<div class="col" id="section_ijazah">
+											<input type="file" class="form-control form-control-sm" name="ijazah">
+											<span class="help-block fs-7 fst-italic text-danger">Filetype : jpg, png | Max Size : 2MB</span>
+										</div>
+										<div class="col-2" id="">
+        <a href="https://mahasiswa.pcr.ac.id/dashboard#" class="btn p-2 w-30px btn-sm btn-light-info disabled" title="download file" "="" id="file_ijazah">
+            
+            <span class="svg-icon svg-icon-muted svg-icon-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path opacity="0.3" d="M19 15C20.7 15 22 13.7 22 12C22 10.3 20.7 9 19 9C18.9 9 18.9 9 18.8 9C18.9 8.7 19 8.3 19 8C19 6.3 17.7 5 16 5C15.4 5 14.8 5.2 14.3 5.5C13.4 4 11.8 3 10 3C7.2 3 5 5.2 5 8C5 8.3 5 8.7 5.1 9H5C3.3 9 2 10.3 2 12C2 13.7 3.3 15 5 15H19Z" fill="black"></path>
+                <path d="M13 17.4V12C13 11.4 12.6 11 12 11C11.4 11 11 11.4 11 12V17.4H13Z" fill="black"></path>
+                <path opacity="0.3" d="M8 17.4H16L12.7 20.7C12.3 21.1 11.7 21.1 11.3 20.7L8 17.4Z" fill="black"></path>
+            </svg></span>
+                
+        </a> 
+        </div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="mb-5">
+									<label class="form-label required">Akta Kelahiran</label>
+									<span class="message_akta_kelahiran"></span>&nbsp;
+									<div class="row">
+										<div class="col" id="section_akta_kelahiran">
+											<input type="file" class="form-control form-control-sm" name="akta_kelahiran">
+											<span class="help-block fs-7 fst-italic text-danger">Filetype : jpg, png | Max Size : 2MB</span>
+										</div>
+										<div class="col-2" id="">
+        <a href="https://mahasiswa.pcr.ac.id/dashboard#" class="btn p-2 w-30px btn-sm btn-light-info disabled" title="download file" "="" id="file_akta_kelahiran">
+            
+            <span class="svg-icon svg-icon-muted svg-icon-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path opacity="0.3" d="M19 15C20.7 15 22 13.7 22 12C22 10.3 20.7 9 19 9C18.9 9 18.9 9 18.8 9C18.9 8.7 19 8.3 19 8C19 6.3 17.7 5 16 5C15.4 5 14.8 5.2 14.3 5.5C13.4 4 11.8 3 10 3C7.2 3 5 5.2 5 8C5 8.3 5 8.7 5.1 9H5C3.3 9 2 10.3 2 12C2 13.7 3.3 15 5 15H19Z" fill="black"></path>
+                <path d="M13 17.4V12C13 11.4 12.6 11 12 11C11.4 11 11 11.4 11 12V17.4H13Z" fill="black"></path>
+                <path opacity="0.3" d="M8 17.4H16L12.7 20.7C12.3 21.1 11.7 21.1 11.3 20.7L8 17.4Z" fill="black"></path>
+            </svg></span>
+                
+        </a> 
+        </div>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="mb-5">
+									<label class="form-label required">Kartu Keluarga</label>
+									<span class="message_kk"></span>&nbsp;
+									<div class="row">
+										<div class="col" id="section_kk">
+											<input type="file" class="form-control form-control-sm" name="kk">
+											<span class="help-block fs-7 fst-italic text-danger">Filetype : jpg, png | Max Size : 2MB</span>
+										</div>
+										<div class="col-2" id="">
+        <a href="https://mahasiswa.pcr.ac.id/dashboard#" class="btn p-2 w-30px btn-sm btn-light-info disabled" title="download file" "="" id="file_kk">
+            
+            <span class="svg-icon svg-icon-muted svg-icon-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path opacity="0.3" d="M19 15C20.7 15 22 13.7 22 12C22 10.3 20.7 9 19 9C18.9 9 18.9 9 18.8 9C18.9 8.7 19 8.3 19 8C19 6.3 17.7 5 16 5C15.4 5 14.8 5.2 14.3 5.5C13.4 4 11.8 3 10 3C7.2 3 5 5.2 5 8C5 8.3 5 8.7 5.1 9H5C3.3 9 2 10.3 2 12C2 13.7 3.3 15 5 15H19Z" fill="black"></path>
+                <path d="M13 17.4V12C13 11.4 12.6 11 12 11C11.4 11 11 11.4 11 12V17.4H13Z" fill="black"></path>
+                <path opacity="0.3" d="M8 17.4H16L12.7 20.7C12.3 21.1 11.7 21.1 11.3 20.7L8 17.4Z" fill="black"></path>
+            </svg></span>
+                
+        </a> 
+        </div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="mb-5">
+									<label class="form-label required">NIK</label>
+									<span class="message_kk"></span>&nbsp;
+									<input type="name" class="form-control form-control-sm" name="nik_kk" value="">
+									<span class="help-block fs-7 fst-italic text-danger">Sesuai dengan Kartu Keluarga</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="mb-5">
+									<label class="form-label required">Nama</label>
+									<span class="message_ijazah"></span>&nbsp;
+									<input type="name" class="form-control form-control-sm" name="nama_akta" value="">
+									<span class="help-block fs-7 fst-italic text-danger">Sesuai dengan Ijazah
+																					SMA/SMK/MA/Sederajat
+										</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="mb-5">
+									<label class="form-label required">Tempat Tanggal Lahir</label>
+									<span class="message_ijazah"></span>&nbsp;
+									<div class="row">
+										<div class="col-md-12 col-xxl-6 mb-3">
+											<input type="text" name="tempat_lahir_akta" id="tempat_lahir_akta" class="form-control">
+										</div>
+										<div class="col-md-12 col-xxl-6 mb-3">
+											<input type="text" name="tanggal_lahir_akta" id="tanggal_lahir_akta" class="form-control">
+										</div>
+									</div>
+									<span class="help-block fs-7 fst-italic text-danger">Sesuai dengan Ijazah
+																					SMA/SMK/MA/Sederajat
+										</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					</form>				</div>
+				<div class="modal-footer" id="modalDokumen_footer">
+					
+        <a href="https://mahasiswa.pcr.ac.id/dashboard#" class="btn btn-success btn-rounded btn-outline btn-sm me-1 submit_dokumen" title="">
+            
+                <span class="svg-icon svg-icon-muted svg-icon-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9.89557 13.4982L7.79487 11.2651C7.26967 10.7068 6.38251 10.7068 5.85731 11.2651C5.37559 11.7772 5.37559 12.5757 5.85731 13.0878L9.74989 17.2257C10.1448 17.6455 10.8118 17.6455 11.2066 17.2257L18.1427 9.85252C18.6244 9.34044 18.6244 8.54191 18.1427 8.02984C17.6175 7.47154 16.7303 7.47154 16.2051 8.02984L11.061 13.4982C10.7451 13.834 10.2115 13.834 9.89557 13.4982Z" fill="black"></path>
+                </svg></span>
+                &nbsp;Simpan
+        </a> 
+        				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modalSP">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" id="modalSP_content">
+				<div class="modal-header" id="modalSP_header">
+					<h5 class="modal-title" id="modalSP_title">Peringatan!</h5>
+					<div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+						<span class="svg-icon svg-icon-2x"></span>
+					</div>
+				</div>
+
+				<div class="modal-body scroll max-h-400px px-5">
+					<p class="mb-5" id="modalSP_body"></p>
+					<p></p>
+					<div class="modal-footer">
+						
+        <a href="https://mahasiswa.pcr.ac.id/dashboard#" class="btn btn-secondary btn-rounded btn-outline btn-sm me-1 " title="" data-bs-dismiss="modal">
+            &nbsp;Tutup
+        </a> 
+        					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<script src="./Mahasiswa _ Dashboard_files/index.js.download"></script>
+	<script src="./Mahasiswa _ Dashboard_files/xy.js.download"></script>
+	<script src="./Mahasiswa _ Dashboard_files/radar.js.download"></script>
+	<script src="./Mahasiswa _ Dashboard_files/Animated.js.download"></script>
+	<script src="./Mahasiswa _ Dashboard_files/custom.js.download"></script>
+
+	<script>
+		const csrf = 'mahasiswa_security'
+		const csrf_token = '38b937065fe19c7b95aa74651233ffdb'
+
+		function clipboard(id) {
+        	document.getElementById("clipboard").value = id
+			var copyText = document.getElementById("clipboard");
+			copyText.select();
+			copyText.setSelectionRange(0, 99999);
+			navigator.clipboard.writeText(copyText.value);
+			toastr.success('Copied');
+		}
+
+		document.addEventListener("DOMContentLoaded", (e) => {
+			$('#table_semester_0').DataTable({
+				"processing": false, //Feature control the processing indicator.
+				"serverSide": false, //Feature control DataTables' server-side processing mode.
+				"ordering": false,
+				"paging": false,
+				"ordering": false,
+				"searching": false,
+				"info": false,
+				"scrollY": "240px",
+				"responsive": true,
+				"columns": [{
+						"data": "no",
+						"width": "10%",
+						"className": "text-center",
+					},
+					{
+						"data": "nama_mk",
+						"className": "",
+					}, {
+						"data": "sks",
+						"width": "14%",
+						"className": "text-center",
+					},{
+						"data": "pengampu",
+						"width": "14%",
+						"className": "text-center",
+					}, {
+						"data": "kelas",
+						"width": "14%",
+						"className": "text-center",
+					},
+					{
+						"data": "persentase",
+						"width": "14%",
+						"className": "text-center",
+					},
+					// {
+					//     "data": "keterangan",
+					//     "width": "5%",
+					//     "className": "text-center",
+					// },
+					// {
+					//     "data": "aksi",
+					//     "width": "5%"
+					// },
+				],
+				"columnDefs": [{
+					responsivePriority: 1,
+					targets: [1, 4]
+				}],
+				"ajax": {
+					"url": 'https://mahasiswa.pcr.ac.id/presensi/pagination/dashboard',
+					"data": {
+						[`${csrf}`]: csrf_token,
+						ta_sms: 'MTAz'
+					},
+					"type": "POST",
+				},
+			})
+
+			$(document).on('click', '.active_va', function(e) {
+				e.preventDefault()
+				toastr.info('Coming soon, fitur sedang tahap pengembangan');
+			});
+
+							$(document).on('click', '.dokumen_mahasiswa', function(e) {
+					e.preventDefault()
+					document.getElementById("modalDokumen_form").reset();
+					target = document.querySelector('body');
+					blockUI = new KTBlockUI(target, {
+						message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+					});
+					blockUI.block();
+
+					$.ajax({
+						method: 'POST',
+						url: 'https://mahasiswa.pcr.ac.id/profile/get/dokumen_form',
+						dataType: 'JSON',
+						data: {
+							[`${csrf}`]: csrf_token,
+						},
+						success: function(resp) {
+							blockUI.release();
+							blockUI.destroy();
+							if (resp.status) {
+								$('#modalDokumen_form [name="nik_kk"]').val(resp.data.nik)
+								$('#modalDokumen_form [name="nama_akta"]').val(resp.data.nama)
+								$('#modalDokumen_form [name="tempat_lahir_akta"]').val(resp.data.tempat_lahir)
+
+								$('#file_ijazah').attr('href', resp.data.ijazah).attr('target', '_blank');
+								if (resp.data.ijazah != '#') {
+									$('#file_ijazah').removeClass('disabled')
+								} else {
+									$('#file_ijazah').addClass('disabled')
+								}
+								if (resp.data.is_ijazah) {
+									$('#section_ijazah').hide()
+									// $('.message_ijazah').html(resp.data.msg_ijazah)
+									$('#modalDokumen_form [name="ijazah"]').prop('disabled', true)
+									$('#modalDokumen_form [name="nama_akta"]').prop('disabled', true)
+									$('#modalDokumen_form [name="tanggal_lahir_akta"]').prop('disabled', true)
+									$('#modalDokumen_form [name="tempat_lahir_akta"]').prop('disabled', true)
+								} else {
+									$('#section_ijazah').show()
+									$('#modalDokumen_form [name="ijazah"]').prop('disabled', false)
+									$('#modalDokumen_form [name="nama_akta"]').prop('disabled', false)
+									$('#modalDokumen_form [name="tanggal_lahir_akta"]').prop('disabled', false)
+									$('#modalDokumen_form [name="tempat_lahir_akta"]').prop('disabled', false)
+								}
+								$('.message_ijazah').html(resp.data.msg_ijazah)
+
+								$('#file_akta_kelahiran').attr('href', resp.data.akta_kelahiran).attr('target', '_blank');
+								if (resp.data.akta_kelahiran != '#') {
+									$('#file_akta_kelahiran').removeClass('disabled')
+								} else {
+									$('#file_akta_kelahiran').addClass('disabled')
+								}
+								if (resp.data.is_akta_kelahiran) {
+									$('#section_akta_kelahiran').hide()
+									// $('.message_akta_kelahiran').html('<span class="text-success"><i class="bi bi-check-circle-fill text-success" title="data verified"></i> Verified</span>')
+									$('#modalDokumen_form [name="akta_kelahiran"]').prop('disabled', true)
+								} else {
+									$('#section_akta_kelahiran').show()
+									// $('.message_akta_kelahiran').html('')
+									$('#modalDokumen_form [name="akta_kelahiran"]').prop('disabled', false)
+								}
+								$('.message_akta_kelahiran').html(resp.data.msg_akta_kelahiran)
+
+								$('#file_kk').attr('href', resp.data.kk).attr('target', '_blank');
+								if (resp.data.kk != '#') {
+									$('#file_kk').removeClass('disabled')
+								} else {
+									$('#file_kk').addClass('disabled')
+								}
+								if (resp.data.is_kk) {
+									$('#modalDokumen_form [name="nik_kk"]').prop('disabled', true)
+									$('#section_kk').hide()
+									// $('.message_kk').html('<span class="text-success"><i class="bi bi-check-circle-fill text-success" title="data verified"></i> Verified</span>')
+									$('#modalDokumen_form [name="kk"]').prop('disabled', true)
+								} else {
+									$('#modalDokumen_form [name="nik_kk"]').prop('disabled', false)
+									$('#section_kk').show()
+									// $('.message_kk').html('')
+									$('#modalDokumen_form [name="kk"]').prop('disabled', false)
+								}
+								$('.message_kk').html(resp.data.msg_kk)
+
+								if (resp.data.is_kk && resp.data.is_ijazah && resp.data.is_akta_kelahiran) {
+									$('.submit_dokumen').addClass('disabled')
+									$('#modalDokumen_footer').hide()
+								} else {
+									$('.submit_dokumen').removeClass('disabled')
+									$('#modalDokumen_footer').show()
+								}
+
+								$("#tanggal_lahir_akta").flatpickr({
+									dateFormat: "d M Y",
+									defaultDate: resp.data.tanggal_lahir
+								});
+								toastr.success(resp.message);
+							} else {
+								$('#modalDokumen_form :input').prop('disabled', 'disabled')
+								$('.submit_dokumen').addClass('disabled')
+								toastr.error(resp.message);
+							}
+						}
+					});
+					$('#modalDokumen').modal('show')
+				});
+
+				$(document).on('click', '.submit_dokumen', function(e) {
+					e.preventDefault()
+					target = document.querySelector('body');
+					blockUI = new KTBlockUI(target, {
+						message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+					});
+					blockUI.block();
+
+					let myForm = document.getElementById('modalDokumen_form');
+					let formData = new FormData(myForm);
+
+					$.ajax({
+						method: 'POST',
+						url: 'https://mahasiswa.pcr.ac.id/profile/update/dokumen_form',
+						dataType: 'JSON',
+						processData: false,
+						contentType: false,
+						data: formData,
+						success: function(resp) {
+							blockUI.release();
+							blockUI.destroy();
+							if (resp.status) {
+								$('#modalDokumen').modal('hide')
+								toastr.success(resp.message);
+							} else {
+								toastr.error(resp.message);
+							}
+						}
+					});
+				});
+
+				$(document).on('click', '.show_msg', function(e) {
+					swal.fire("Keterangan", $(this).data('msg'), "info")
+				})
+			
+			$(document).ready(function() {
+				latest_tak()
+				poin_tak()
+								kompen()
+								system_log()
+												chart_ip()
+				chart_ipk_history()
+							});
+		})
+
+		function chart_ip() {
+			target = document.querySelector('#chart_ipk');
+			blockUI = new KTBlockUI(target, {
+				message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+			});
+
+			blockUI.block();
+
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/nilai/get/ip',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token,
+					ta_sms: 'MTAz'
+				},
+				success: function(resp) {
+					blockUI.release();
+					blockUI.destroy();
+					if (resp.status) {
+						//create chart IP
+						create_chart('solid_gauge', 'chart_ipk', [{
+							label: "IPK : " + resp.data.ipk,
+							value: resp.data.ipk,
+							columnSettings: {
+								fill: '#AFCBFF'
+							},
+							full: 4
+						}, {
+							label: "IPS : " + (resp.data.ips == '-' ? 0 : resp.data.ips),
+							value: resp.data.ips,
+							columnSettings: {
+								fill: '#B5B9FF'
+							},
+							full: 4
+						}], 4, '')
+					} else {
+						// toastr.error(resp.message);
+					}
+				}
+			})
+		}
+
+		function system_log() {
+			target_log = document.querySelector('#latest_log');
+			blockUI_log = new KTBlockUI(target_log, {
+				message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+			});
+			blockUI_log.block();
+
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/log/get',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token
+				},
+				success: function(resp) {
+					blockUI_log.release();
+					blockUI_log.destroy();
+					if (resp.status) {
+						$.each(resp.data, function(k, v) {
+							$('#latest_log').append(
+								'<div class="d-flex align-items-center mb-2">' +
+								'<span class="bullet bullet-vertical h-40px bg-primary"></span>' +
+								'<div class="flex-grow-1 mx-5">' +
+								'<a href="#" class="text-gray-800 text-hover-primary fw-bolder fs-6">' + v.aksi + '</a>' +
+								'<span class="text-muted fw-bold d-block">' + v.keterangan + '</span>' +
+								'</div>' +
+								'<span class="badge badge-secondary fs-8 fw-bolder fst-italic">' + v.tanggal + '</span>' +
+								'</div>'
+							)
+						});
+					} else {
+						$('#latest_log').html(
+							'<div class="alert alert-dismissible bg-light-warning border border-warning d-flex flex-column flex-sm-row p-5 mb-10">' +
+							'<span class="svg-icon svg-icon-2hx svg-icon-warning me-4 mb-5 mb-sm-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">' +
+							'<path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"></path>' +
+							'<path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black"></path>' +
+							'</svg>' +
+							'</span>' +
+							'<div class="d-flex flex-column pe-0 pe-sm-10">' +
+							'<h5 class="mb-1">Info</h5>' +
+							'<ul class="mb-0">' +
+							'<li>Belum ada data log sistem</li>' +
+							'</ul>' +
+							'</div>' +
+							'</div>')
+					}
+				}
+			})
+		}
+
+		function chart_ipk_history() {
+			target_ = document.querySelector('#chart_ipk_history');
+			blockUI_ = new KTBlockUI(target_, {
+				message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+			});
+			blockUI_.block();
+
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/nilai/get/ip_history',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token
+				},
+				success: function(resp) {
+					blockUI_.release();
+					blockUI_.destroy();
+					if (resp.status) {
+						//create chart history IPK
+						create_chart('bar', 'chart_ipk_history', resp.data, 4, '')
+					} else {
+						// toastr.error(resp.message);
+					}
+				}
+			})
+		}
+
+		
+
+		function kompen() {
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/kompensasi/get/simple',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token,
+					ta_sms: 'MTAz'
+				},
+				success: function(resp) {
+					if (resp.status) {
+						$('#kompen').html('<span class="text-' + (resp.data[0].info.class && resp.data[0].keterangan != 'LUNAS' ? 'white' : (resp.data[0].keterangan == 'LUNAS' ? 'success' : 'danger')) + '">' + resp.data[0].jumlah_kompen + ' Jam ' + (resp.data[0].info.class ? '<i class="bi bi-x-circle-fill text-white fs-4" title="Mendapat ' + resp.data[0].info.keterangan + '"></i>' : (resp.data[0].keterangan == 'LUNAS' ? '<i class="bi bi-check-circle-fill text-success" title="Kompen anda sudah lunas"></i>' : '<i class="bi bi-x-circle-fill text-danger" title="Kompen anda belum lunas"></i>')) + (resp.data[0].info.class && resp.data[0].info.keterangan && resp.data[0].info.keterangan != 'Peringatan Dosen Wali' ? '<span class="text-white fw-bolder fs-5"> - ' + resp.data[0].info.keterangan + '</span>' : '') + '</span>')
+						$('#kompen_indis').html('<span class="text-' + (resp.data[0].keterangan == 'LUNAS' ? 'success' : 'danger') + '">' + resp.data[0].jumlah_indis + ' Jam ' + (resp.data[0].keterangan == 'LUNAS' ? '<i class="bi bi-check-circle-fill text-success" title="Kompen anda sudah lunas"></i>' : '<i class="bi bi-x-circle-fill text-danger" title="Kompen anda belum lunas"></i>') + '</span>')
+						// console.log((resp.data[0].info.class? resp.data[0].info.class : "-"))
+						// $.each(resp.data[0].info, function(i, v) {
+						//     console.log(v.color)
+						// });
+						if (resp.data[0].info.class && resp.data[0].keterangan != 'LUNAS') {
+							icon = `
+                                <span class=" svg-icon-2hx svg-icon-` + resp.data[0].info.class + ` svg-icon-2hx"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor"/>
+                                    <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="currentColor"/>
+                                    <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="currentColor"/>
+                                    </svg>
+                                </span>`
+							$('#spAlert').toggleClass('d-none')
+							$('#spAlert').addClass('alert-' + resp.data[0].info.class)
+							$('#spAlert').html(icon + ` ` + (resp.data[0].info.class && resp.data[0].info.keterangan != 'Peringatan Dosen Wali' ? `<span class="fs-3 fw-bolder">Anda Mendapat ` + resp.data[0].info.keterangan + `</span> - ` : '') + `` + resp.data[0].info.message)
+							$('#kompenBadgeBody').addClass('bg-' + resp.data[0].info.class)
+							$('#kompenBadgeText').addClass('text-white')
+							$('#kompenBadgeSubtext').removeClass('text-primary')
+							$('#kompenBadgeSubtext').addClass('text-white')
+							$('#kompenBadgeIcon').removeClass('svg-icon-primary')
+							$('#kompenBadgeIcon').addClass('svg-icon-light')
+
+							if(resp.data[0].info.class != 'info'){
+								$('#modalSP_title').addClass('text-white')
+								$('#modalSP_header').addClass('bg-' + resp.data[0].info.class)
+								$('#modalSP_body').html(resp.data[0].info.popup)
+								$('#modalSP').modal('show')
+							}
+						}
+					} else {
+						$('#kompen').html('<span class="text-danger fs-7">-</span>')
+					}
+				}
+			})
+		}
+
+		function poin_tak() {
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/tak/get/nilai_tak',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token
+				},
+				success: function(resp) {
+					if (resp.status) {
+						$('#tak').html('<span class="text-primary">' + (resp.data.nilai ? resp.data.nilai : 0) + '</span>')
+					} else {
+						$('#tak').html('<span class="text-danger">0</span>')
+					}
+				}
+			})
+		}
+
+		function yudisium_badge() {
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/yudisium/get/status_yudisium',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token
+				},
+				success: function(resp) {
+					if (resp.status) {
+						$('#yudisium_badge').html('<span class="text-primary">' + resp.message + '</span>')
+					} else {
+						$('#yudisium_badge').html('<span class="text-danger">' + resp.message + '</span>')
+					}
+				}
+			})
+		}
+
+		function latest_tak() {
+			_target = document.querySelector('#latest_tak');
+			_blockUI = new KTBlockUI(_target, {
+				message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+			});
+			_blockUI.block();
+
+			$('#latest_tak').html('')
+			$.ajax({
+				method: 'POST',
+				url: 'https://mahasiswa.pcr.ac.id/tak/get/latest_pengajuan',
+				dataType: 'JSON',
+				data: {
+					[`${csrf}`]: csrf_token
+				},
+				success: function(resp) {
+					_blockUI.release();
+					_blockUI.destroy();
+					if (resp.status) {
+						var count = resp.data.length
+						var i = 0
+						$.each(resp.data, function(k, v) {
+							if (i == 10)
+								return false
+
+							$('#latest_tak').append(
+								'<div class="d-flex align-items-center mb-2">' +
+								'<span class="bullet bullet-vertical h-40px bg-' + (v.status == 'diajukan' ? 'info' : (v.status == 'proses' ? 'primary' : (v.status == 'Diterima' ? 'success' : (v.status == 'Ditolak' ? 'danger' : 'secondary')))) + '"></span>' +
+								'<div class="flex-grow-1 mx-5">' +
+								'<a href="#" class="text-gray-800 text-hover-primary fw-bolder fs-6">' + v.kegiatan + '</a>' +
+								'<span class="text-muted fw-bold d-block">' + v.aktifitas + '</span>' +
+								'</div>' +
+								'<span class="badge badge-light-' + (v.status == 'diajukan' ? 'info' : (v.status == 'proses' ? 'primary' : (v.status == 'Diterima' ? 'success' : (v.status == 'Ditolak' ? 'danger' : 'warning')))) + ' fs-8 fw-bolder">' + v.status + '</span>' +
+								'</div>'
+							)
+							// $('#latest_log').append(
+							//     '<div class="d-flex align-items-center mb-8">' +
+							//     '<span class="bullet bullet-vertical h-40px bg-' + (v.status == 'diajukan' ? 'info' : (v.status == 'proses' ? 'primary' : (v.status == 'diterima' ? 'success' : (v.status == 'ditolak' ? 'ditolak' : 'secondary')))) + '"></span>' +
+							//     '<div class="flex-grow-1 mx-5">' +
+							//     '<a href="#" class="text-gray-800 text-hover-primary fw-bolder fs-6">' + v.kegiatan + '</a>' +
+							//     '<span class="text-muted fw-bold d-block">' + v.aktifitas + '</span>' +
+							//     '</div>' +
+							//     '<span class="badge badge-light-' + (v.status == 'diajukan' ? 'info' : (v.status == 'proses' ? 'primary' : (v.status == 'diterima' ? 'success' : (v.status == 'ditolak' ? 'ditolak' : 'warning')))) + ' fs-8 fw-bolder">' + v.status + '</span>' +
+							//     '</div>'
+							// )
+							i++
+						});
+					} else {
+						$('#latest_tak').html(
+							'<div class="alert alert-dismissible bg-light-warning border border-warning d-flex flex-column flex-sm-row p-5 mb-10">' +
+							'<span class="svg-icon svg-icon-2hx svg-icon-warning me-4 mb-5 mb-sm-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">' +
+							'<path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"></path>' +
+							'<path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black"></path>' +
+							'</svg>' +
+							'</span>' +
+							'<div class="d-flex flex-column pe-0 pe-sm-10">' +
+							'<h5 class="mb-1">Info</h5>' +
+							'<ul class="mb-0">' +
+							'<li>Belum ada data pengajuan TAK yang anda ajukan</li>' +
+							'</ul>' +
+							'</div>' +
+							'</div>')
+					}
+				}
+			})
+		}
+	</script>
+                    </div>
+
+                    <div class="modal fade" tabindex="-1" id="modalDokumen">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Form Dokumen Mahasiswa</h5>
+                                </div>
+                                <div class="modal-body px-5">
+                                    <div class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">
+                                        <span class="svg-icon svg-icon-2hx svg-icon-primary me-4 mb-5 mb-sm-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"></path>
+                                                <path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black"></path>
+                                            </svg>
+                                        </span>
+                                        <div class="d-flex flex-column pe-0 pe-sm-10">
+                                            <h5 class="mb-1">Info</h5>
+                                            <ul class="mb-0">
+                                                <li>Mohon dokumen yang diupload adalah hasil scan dari dokumen yang sebenarnya</li>
+                                                <li>Dokumen akan digunakan sebagai referensi dari kebutuhan dari administrasi di Politeknik Caltex Riau, seperti <span class="fw-bolder text-danger">transkrip nilai, pelaporan di PD DIKTI, ijazah serta dokumen lainnya</span></li>
+                                                <li class="fw-bolder text-danger">Data yang diisi harus data yang sebenar-benarnya dan sesuai dengan dokumen yang dilampirkan</li>
+                                                <li class="fw-bolder text-danger">Perhatikan detail Huruf Besar/Huruf Kecil, Singkatan, Spasi, Apostrophe ('), Titik (.), dan detail lainnya.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <form action="https://mahasiswa.pcr.ac.id/dashboard" id="modalDokumen_form" class="form" method="post" accept-charset="utf-8">
+<input type="hidden" name="mahasiswa_security" value="38b937065fe19c7b95aa74651233ffdb">                                        
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="mb-5">
+                                                                                                            <label class="form-label required">Ijazah SMA/SMK/MA/Sederajat</label>
+                                                                                                        <input type="file" class="form-control form-control-sm" name="ijazah">
+                                                    <span class="help-block fs-7 fst-italic text-danger">Filetype : jpg, png | Max Size : 2MB</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="mb-5">
+                                                    <label class="form-label required">Akta Kelahiran1</label>
+                                                    <input type="file" class="form-control form-control-sm" name="akta_kelahiran">
+                                                    <span class="help-block fs-7 fst-italic text-danger">Filetype : jpg, png | Max Size : 2MB</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="mb-5">
+                                                    <label class="form-label required">Kartu Keluarga</label>
+                                                    <input type="file" class="form-control form-control-sm" name="kk">
+                                                    <span class="help-block fs-7 fst-italic text-danger">Filetype : jpg, png | Max Size : 2MB</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="mb-5">
+                                                    <label class="form-label required">NIK</label>
+                                                    <input type="name" class="form-control form-control-sm" name="nik_kk" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="mb-5">
+                                                    <label class="form-label required">Nama Sesuai Ijazah</label>
+                                                    <input type="name" class="form-control form-control-sm" name="nama_akta" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="mb-5">
+                                                    <label class="form-label required">Tempat Tanggal Lahir Sesuai Ijazah</label>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-xxl-6 mb-3">
+                                                            <input type="text" name="tempat_lahir_akta" id="tempat_lahir_akta" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-12 col-xxl-6 mb-3">
+                                                            <input type="text" name="tanggal_lahir_akta" id="tanggal_lahir_akta" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>                                </div>
+                                <div class="modal-footer">
+                                    
+        <a href="https://mahasiswa.pcr.ac.id/dashboard#" class="btn btn-success btn-rounded btn-outline btn-sm me-1 submit_dokumen" title="">
+            
+                <span class="svg-icon svg-icon-muted svg-icon-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9.89557 13.4982L7.79487 11.2651C7.26967 10.7068 6.38251 10.7068 5.85731 11.2651C5.37559 11.7772 5.37559 12.5757 5.85731 13.0878L9.74989 17.2257C10.1448 17.6455 10.8118 17.6455 11.2066 17.2257L18.1427 9.85252C18.6244 9.34044 18.6244 8.54191 18.1427 8.02984C17.6175 7.47154 16.7303 7.47154 16.2051 8.02984L11.061 13.4982C10.7451 13.834 10.2115 13.834 9.89557 13.4982Z" fill="black"></path>
+                </svg></span>
+                &nbsp;Simpan
+        </a> 
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", (e) => {
+                                                    })
+                    </script>
+                    <!--end::Container-->
+                </div>
+                <!--end::Content-->
+                <!--begin::Footer-->
+                <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+    <!--begin::Container-->
+    <div class="container-fluid d-flex flex-column flex-md-row flex-stack">
+        <!--begin::Copyright-->
+        <div class="text-dark order-2 order-md-1">
+            <span class="text-gray-400 fw-bold me-1">BSTI</span>
+            <a href="https://keenthemes.com/" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">PCR © 2023</a>
+                    </div>
+        <!--end::Copyright-->
+    </div>
+    <!--end::Container-->
+</div>                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Root-->
+        <!--begin::Activities drawer-->
+    <div id="kt_activities" class="bg-body px-6 drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="activities" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:&#39;400px&#39;, &#39;lg&#39;: &#39;800px&#39;}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_activities_toggle" data-kt-drawer-close="#kt_activities_close" style="width: 800px !important;">
+        <div class="card shadow-none rounded-0">
+            <!--begin::Header-->
+            <div class="card-header" id="kt_activities_header">
+                <h3 class="card-title fw-bolder text-dark">Notifikasi Sistem</h3>
+                <div class="card-toolbar">
+                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5" id="kt_activities_close">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </button>
+                </div>
+            </div>
+            <!--end::Header-->
+            <!--begin::Body-->
+            <div class="card-body position-relative" id="kt_activities_body">
+                <!--begin::Content-->
+                <div id="kt_activities_scroll" class="position-relative scroll-y me-n5 pe-5" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_activities_body" data-kt-scroll-dependencies="#kt_activities_header, #kt_activities_footer" data-kt-scroll-offset="5px" style="height: 583px;">
+                    <!--begin::Timeline items-->
+                    <div class="timeline" id="notifikasi_items">
+                        <!--begin::Timeline item-->
+                    <div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Surat Permohonan Izin Survey sudah selesai. Silahkan datang ke BAAK untuk pengambilan surat</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 12 Oct 2023 13:56:44 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Surat Permohonan Izin Survey sudah selesai. Silahkan datang ke BAAK untuk pengambilan surat</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 12 Oct 2023 13:56:38 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Surat Permohonan Izin Survey sudah selesai. Silahkan datang ke BAAK untuk pengambilan surat</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 12 Oct 2023 13:56:31 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Permohonan Surat Permohonan Izin Survey sedang di proses</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 11 Oct 2023 07:49:10 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Permohonan Surat Permohonan Izin Survey sedang di proses</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 11 Oct 2023 07:48:59 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Permohonan Surat Permohonan Izin Survey sedang di proses</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 11 Oct 2023 07:48:48 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Surat Permohonan Izin Survey sudah selesai. Silahkan datang ke BAAK untuk pengambilan surat</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 06 Oct 2023 08:12:09 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Permohonan Surat Permohonan Izin Survey sedang di proses</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 05 Oct 2023 11:02:34 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Permohonan Surat Permohonan Izin Survey ditangguhkan. Silahkan cek detail Permohonan</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 05 Oct 2023 09:38:51 WIB </div>                </div>            </div>        </div>    </div><div class="timeline-item">        <div class="timeline-line w-40px"></div>        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">            <div class="symbol-label bg-light-primary">                <span class="svg-icon svg-icon-2 svg-icon-primary">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black"></path>                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black"></path>                    </svg>                </span>            </div>        </div>        <div class="timeline-content mb-10 mt-n1">            <div class="pe-3 mb-2">                <div class="fs-5 fw-bold mb-2">Permohonan Surat Permohonan Izin Survey sedang di proses</div>                <!--end::Title-->                <!--begin::Description-->                <div class="d-flex align-items-center mt-1 fs-6">                    <div class="text-muted me-2 fs-7">Ditambahkan 05 Oct 2023 09:01:14 WIB </div>                </div>            </div>        </div>    </div></div>
+                    <!--end::Timeline items-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Body-->
+            <!--begin::Footer-->
+            <div class="card-footer py-5 text-center" id="kt_activities_footer">
+                <a href="https://mahasiswa.pcr.ac.id/notifikasi" class="btn btn-bg-body text-primary">Lihat Seluruh Notifikasi
+                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                    <span class="svg-icon svg-icon-3 svg-icon-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
+                            <path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
+                        </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                </a>
+            </div>
+            <!--end::Footer-->
+        </div>
+    </div>
+    <!--end::Activities drawer-->
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+        <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+        <span class="svg-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
+                <path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
+            </svg>
+        </span>
+        <!--end::Svg Icon-->
+    </div>
+    <!--end::Scrolltop-->    <!--end::Main-->
+
+    <!--begin::Javascript-->
+    <script>
+    var hostUrl = "assets/";
+</script>
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="./Mahasiswa _ Dashboard_files/plugins.bundle.js.download"></script>
+<script src="./Mahasiswa _ Dashboard_files/scripts.bundle.js.download"></script>
+
+<!--end::Global Javascript Bundle-->
+
+<script src="./Mahasiswa _ Dashboard_files/datatables.bundle.js.download"></script>
+<script src="./Mahasiswa _ Dashboard_files/basic.js.download"></script>
+
+    <!--begin::Page Vendors Javascript(used by this page)-->
+    <script src="./Mahasiswa _ Dashboard_files/fullcalendar.bundle.js.download"></script>
+    <!--end::Page Vendors Javascript-->
+    <!--begin::Page Custom Javascript(used by this page)-->
+    <script src="./Mahasiswa _ Dashboard_files/widgets.js.download"></script>
+    <script src="./Mahasiswa _ Dashboard_files/chat.js.download"></script>
+    <script src="./Mahasiswa _ Dashboard_files/create-app.js.download"></script>
+    <script src="./Mahasiswa _ Dashboard_files/upgrade-plan.js.download"></script>
+
+    <!--end::Page Custom Javascript-->
+
+<script>
+    function loader(target) {
+        target = document.querySelector(targer);
+        blockUI = new KTBlockUI(target, {
+            message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+        });
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", (e) => {
+        $.ajax({
+            method: 'POST',
+            url: 'https://mahasiswa.pcr.ac.id/notifikasi/get',
+            dataType: 'JSON',
+            data: {
+                [`${csrf}`]: csrf_token
+            },
+            success: function(resp) {
+                if (resp.status) {
+                    $.each(resp.data, function(k, v) {
+                        $('#notifikasi_items').append('' +
+                            '<div class="timeline-item">' +
+                            '        <div class="timeline-line w-40px"></div>' +
+                            '        <div class="timeline-icon symbol symbol-circle symbol-40px me-4">' +
+                            '            <div class="symbol-label bg-light-primary">' +
+                            '                <span class="svg-icon svg-icon-2 svg-icon-primary">' +
+                            '                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">' +
+                            '                        <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black" />' +
+                            '                        <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black" />' +
+                            '                    </svg>' +
+                            '                </span>' +
+                            '            </div>' +
+                            '        </div>' +
+                            '        <div class="timeline-content mb-10 mt-n1">' +
+                            '            <div class="pe-3 mb-2">' +
+                            '                <div class="fs-5 fw-bold mb-2">' + v.judul + '</div>' +
+                            '                <!--end::Title-->' +
+                            '                <!--begin::Description-->' +
+                            '                <div class="d-flex align-items-center mt-1 fs-6">' +
+                            '                    <div class="text-muted me-2 fs-7">Ditambahkan ' + v.timestamp + ' WIB </div>' +
+                            '                </div>' +
+                            '            </div>' +
+                            '        </div>' +
+                            '    </div>' +
+                            '')
+                    });
+                } else {}
+                // if (resp.status) {
+                //     $('#tak').html('<span class="text-primary">' + (resp.data.nilai ? resp.data.nilai : 0) + '</span>')
+                // } else {
+                //     $('#tak').html('<span class="text-danger">0</span>')
+                // }
+            }
+        })
+    })
+</script>
+<script type="text/javascript" src="./Mahasiswa _ Dashboard_files/jquery.redirect.js.download"></script>
+    <!--end::Javascript-->
+
+
+
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body><!--end::Body--></html>

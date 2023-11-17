@@ -8,6 +8,7 @@ File: invoive list  Js File
 
 // Basic Table
 new gridjs.Grid({
+
     columns:
         [
             {
@@ -25,16 +26,25 @@ new gridjs.Grid({
             "Nomor Telepon", "Tanggal Kunjungan",
             {
                 name: 'Tujuan',
-                formatter: (function (cell) {
-                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target=".orderdetailsModal" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded"></i></button></div>');
+                formatter: (function (cell, row) {
+                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#orderdetailsModal_' + row.cells[0].data + '">' + '<i class="bx bx-dots-horizontal-rounded"></i></button></div>');
                 })
             },
+
+
             {
                 name: 'Status',
-                formatter: (function (cell) {
+                formatter: (function (cell, row) {
+
+                    const idTamu = row.cells[0].data;
+
+                    const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateStatus(' + idTamu + ',' + 1 + ')"><i class="bx bx-check-double label-icon"></i>Terima</button>';
+
+                    const tolakButton = '<button type="button" data-bs-toggle="modal" data-bs-target=".add-new-order" class="btn btn-danger waves-effect btn-label waves-light" onclick="updateStatus(' + cell + ', 2)"><i class="bx bx-block label-icon"></i>Tolak</button>';
+
                     switch (cell) {
                         case 0:
-                            return gridjs.html('<span class="badge badge-pill badge-soft-warning font-size-12">Pending</span>');
+                            return gridjs.html(terimaButton + ' ' + tolakButton);
 
                         case 1:
                             return gridjs.html('<span class="badge badge-pill badge-soft-success font-size-12">Disetujui</span>');
@@ -47,22 +57,6 @@ new gridjs.Grid({
                     }
                 })
             },
-            {
-                name: "Action",
-                sort: {
-                    enabled: false
-                },
-                formatter: (function (cell, row) {
-                    const status = row.cells[5].data; // Assuming the status column is at index 5
-
-                    const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateStatus(' + row.cells[0].data + ', 1)"><i class="bx bx-check-double label-icon"></i>Terima</button>';
-
-                    const tolakButton = '<button type="button" data-bs-toggle="modal" data-bs-target=".add-new-order" class="btn btn-danger waves-effect btn-label waves-light" onclick="updateStatus(' + row.cells[0].data + ', 2)"><i class="bx bx-block label-icon"></i>Tolak</button>';
-
-                    return gridjs.html(terimaButton + ' ' + tolakButton);
-                })
-            }
-
         ],
     pagination: {
         limit: 10
@@ -131,3 +125,28 @@ function fixStepIndicator(n) {
     //... and adds the "active" class on the current step:
     x[n].className += " active";
 }
+
+function updateStatus(idTamu, newStatus) {
+    fetch('/whatsapp/' + idTamu + '/' + newStatus, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            // Reload the table or update the row as needed
+            // For example, you might want to refresh the data and re-render the table:
+            grid.refresh();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+};

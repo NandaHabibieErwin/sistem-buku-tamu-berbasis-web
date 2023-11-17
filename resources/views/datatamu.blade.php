@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @extends('layouts.master')
 @section('title')
     Data Tamu
@@ -21,13 +22,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-
-
-
-
-
                         <div id="table-invoices-list"></div>
-
                     </div>
                     <!-- end card body -->
                 </div>
@@ -43,92 +38,26 @@
         <!-- End Page-content -->
 
         <!-- Modal -->
-        <div class="modal fade orderdetailsModal" tabindex="-1" role="dialog" aria-labelledby=orderdetailsModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="orderdetailsModalLabel">Order Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-                        <p class="mb-4">Billing Name: <span class="text-primary">Martin Gurley</span></p>
-
-                        <div class="table-responsive">
-                            <table class="table align-middle table-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            <div>
-                                                <img src="{{ URL::asset('build/images/product/img-1.png') }}" alt=""
-                                                    class="rounded avatar-md">
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div>
-                                                <h5 class="text-truncate font-size-14">Home & Office Chair Crime</h5>
-                                                <p class="text-muted mb-0">$ 225 x 1</p>
-                                            </div>
-                                        </td>
-                                        <td>$ 255</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div>
-                                                <img src="{{ URL::asset('build/images/product/img-2.png') }}" alt=""
-                                                    class="rounded avatar-md">
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div>
-                                                <h5 class="text-truncate font-size-14">Tuition Classes Chair Crime</h5>
-                                                <p class="text-muted mb-0">$ 145 x 1</p>
-                                            </div>
-                                        </td>
-                                        <td>$ 145</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <h6 class="m-0 text-right">Sub Total:</h6>
-                                        </td>
-                                        <td>
-                                            $ 400
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <h6 class="m-0 text-right">Shipping:</h6>
-                                        </td>
-                                        <td>
-                                            Free
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <h6 class="m-0 text-right">Total:</h6>
-                                        </td>
-                                        <td>
-                                            $ 400
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+        @foreach ($data as $tamu)
+            <div class="modal fade" id="orderdetailsModal_{{ $tamu->id_tamu }}" tabindex="-1" role="dialog"
+                aria-labelledby="orderdetailsModalLabel_{{ $tamu->id_tamu }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="orderdetailsModalLabel">Alasan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div class="modal-body">
+                            <p class="mb-4"><span class="text-primary">{{ $tamu->tujuan }}</span></p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endforeach
         <!-- end modal -->
 
         <div class="modal fade add-new-order" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
@@ -162,8 +91,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Date</label>
-                                    <input type="text" class="form-control" placeholder="Select Date"
-                                        id="order-date">
+                                    <input type="text" class="form-control" placeholder="Select Date" id="order-date">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -227,9 +155,20 @@
         </div><!-- /.modal -->
     @endsection
     @section('scripts')
-    <script>
-        var datatamu = @json($data);
-    </script>
+        <script>
+            var datatamu = @json($data);
+
+            var tamuId = button.data('id_tamu'); // Extract tamu ID from data attribute
+            // Find the corresponding tamu object in your data
+            var tamu = datatamu.find(function(item) {
+                return item.id_tamu === tamuId;
+            });
+
+            // Update modal content with the correct tujuan value
+            var modal = $(this);
+            modal.find('.text-primary').text(tamu.tujuan);
+        </script>
+
         <!-- gridjs js -->
         <script src="{{ URL::asset('build/libs/gridjs/gridjs.umd.js') }}"></script>
 
@@ -237,6 +176,7 @@
         <script src="{{ URL::asset('build/libs/flatpickr/flatpickr.min.js') }}"></script>
         <!-- invoice-list init -->
         <script src="{{ URL::asset('build/js/pages/invoice-list.init.js') }}"></script>
+
         <!-- App js -->
         <script src="{{ URL::asset('build/js/app.js') }}"></script>
     @endsection

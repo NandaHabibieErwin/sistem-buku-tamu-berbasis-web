@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\tamuModel;
 
 class tamuController extends Controller
 {
@@ -11,10 +12,8 @@ class tamuController extends Controller
      */
     public function index()
     {
-        $data = DB::select(DB::raw("SELECT id_tamu, nama, notelp, jadwal, tujuan, status FROM bukutamu"));
+        $data = tamuModel::SELECT('id_tamu', 'nama', 'notelp', 'jadwal', 'tujuan', 'status')->get();
         return view('datatamu',compact('data'));
-
-
     }
 
     /**

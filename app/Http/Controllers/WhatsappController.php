@@ -64,16 +64,9 @@ class WhatsappController extends Controller
     }
 
 
-    public function updateStatus($id, $newStatus)
-    {
+    public function updateStatus($id_tamu, $newStatus) {
         // Retrieve data from the database
-        $tamu = tamuModel::find($id);
-        $nama = $tamu->nama;
-        $notelp = ltrim($tamu->notelp, 0);
-        $dept = $tamu->dept;
-        $tujuan = $tamu->tujuan;
-        $jadwal = $tamu->jadwal;
-
+        $tamu = tamuModel::find($id_tamu);
 
         if (!$tamu) {
             // Handle the case where the record is not found
@@ -84,8 +77,7 @@ class WhatsappController extends Controller
         $tamu->status = $newStatus;
         $tamu->save();
 
-        // Continue with the Twilio message sending logic
-        // ...
+        // Continue with any additional logic as needed
 
         // Send a response back to the client
         return response()->json(['message' => 'Status updated successfully']);

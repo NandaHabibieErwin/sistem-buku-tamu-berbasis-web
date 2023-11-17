@@ -1,0 +1,279 @@
+function create_chart(type ,id, data, max = 100, unit){
+	var colors = ['#AFCBFF','#B5B9FF','#97A2FF','#B28DFF','#6EB1EF']
+	var arr = []
+
+	// $.each(data, function(k, v) {
+	// 	var temp = []
+
+	// 	temp[label] = v.label
+	// 	temp[value] = v.value
+	// 	temp[full] = v.full
+	// 	temp[columnSettings] = {fill: colors[k]}
+
+	// 	arr.push(temp)
+	// })
+	if (type == 'solid_gauge'){
+		draw_solid_gauge(id, data, max, unit)
+	} else {
+		draw_bar(id, data, max, unit)
+	}
+}
+
+function draw_solid_gauge(id, data, max, unit) {
+
+	am5.ready(function() {
+
+		// Create root element
+		// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+		var root = am5.Root.new(id);
+
+		// Set themes
+		// https://www.amcharts.com/docs/v5/concepts/themes/
+		root.setThemes([
+			am5themes_Animated.new(root)
+		]);
+
+		// Create chart
+		// https://www.amcharts.com/docs/v5/charts/radar-chart/
+		var chart = root.container.children.push(am5radar.RadarChart.new(root, {
+			panX: false,
+			panY: false,
+			wheelX: "panX",
+			wheelY: "zoomX",
+			innerRadius: am5.percent(50),
+			startAngle: -90,
+			endAngle: 180
+		}));
+		
+		// Add cursor
+		// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+		var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
+			behavior: "zoomX"
+		}));
+
+		cursor.lineY.set("visible", false);
+
+		// Create axes and their renderers
+		// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+		var xRenderer = am5radar.AxisRendererCircular.new(root, {
+			//minGridDistance: 50
+		});
+
+		xRenderer.labels.template.setAll({
+			radius: 10
+		});
+
+		xRenderer.grid.template.setAll({
+			forceHidden: true
+		});
+
+		var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+			renderer: xRenderer,
+			min: 0,
+			max: max,
+			strictMinMax: true,
+			numberFormat: "#'" + unit + "",
+			// tooltip: am5.Tooltip.new(root, {})
+		}));
+
+
+		var yRenderer = am5radar.AxisRendererRadial.new(root, {
+			minGridDistance: 20
+		});
+
+		yRenderer.labels.template.setAll({
+			centerX: am5.p100,
+			fontWeight: "500",
+			fontSize: 14,
+			templateField: "columnSettings"
+		});
+
+		yRenderer.grid.template.setAll({
+			forceHidden: true
+		});
+
+		var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+			categoryField: "label",
+			renderer: yRenderer
+		}));
+
+		yAxis.data.setAll(data);
+
+
+		// Create series
+		// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+		var series1 = chart.series.push(am5radar.RadarColumnSeries.new(root, {
+			xAxis: xAxis,
+			yAxis: yAxis,
+			clustered: false,
+			valueXField: "full",
+			categoryYField: "label",
+			fill: root.interfaceColors.get("alternativeBackground")
+		}));
+
+		series1.columns.template.setAll({
+			width: am5.p100,
+			fillOpacity: 0.08,
+			strokeOpacity: 0,
+			cornerRadius: 20
+		});
+
+		series1.data.setAll(data);
+
+		var series2 = chart.series.push(am5radar.RadarColumnSeries.new(root, {
+			xAxis: xAxis,
+			yAxis: yAxis,
+			clustered: false,
+			valueXField: "value",
+			categoryYField: "label"
+		}));
+
+		series2.columns.template.setAll({
+			width: am5.p100,
+			strokeOpacity: 0,
+			tooltipText: "{categoryY}: {valueX}" + unit + "",
+			cornerRadius: 20,
+			templateField: "columnSettings"
+		});
+
+		series2.data.setAll(data);
+
+		// Animate chart and series in
+		// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+		series1.appear(1000);
+		series2.appear(1000);
+		chart.appear(1000, 100);
+
+	}); // end am5.ready()
+}
+
+function draw_bar(id, data, max, unit){
+	am5.ready(function() {
+
+		// Create root element
+		// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+		var root = am5.Root.new(id);
+		
+		
+		// Set themes
+		// https://www.amcharts.com/docs/v5/concepts/themes/
+		root.setThemes([
+		  am5themes_Animated.new(root)
+		]);
+		
+		
+		// Create chart
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/
+		var chart = root.container.children.push(am5xy.XYChart.new(root, {
+		  panX: true,
+		  panY: true,
+		  wheelX: "panX",
+		  wheelY: "zoomX",
+		  pinchZoomX:true
+		}));
+		
+		// Add cursor
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+		var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+		cursor.lineY.set("visible", false);
+		
+		
+		// Create axes
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+		var xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
+		xRenderer.labels.template.setAll({
+		  rotation: -90,
+		  centerY: am5.p50,
+		  centerX: am5.p100,
+		  paddingRight: 15
+		});
+		
+		var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+		  maxDeviation: 0.3,
+		  categoryField: "label",
+		  renderer: xRenderer,
+		  tooltip: am5.Tooltip.new(root, {})
+		}));
+		
+		var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+		  max: max,
+		  min: 0,
+		  maxDeviation: 0.3,
+		  renderer: am5xy.AxisRendererY.new(root, {})
+		}));
+		
+		
+		// Create series
+		// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+		var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+		  name: "Series 1",
+		  xAxis: xAxis,
+		  yAxis: yAxis,
+		  valueYField: "value",
+		  sequencedInterpolation: true,
+		  categoryXField: "label",
+		  tooltip: am5.Tooltip.new(root, {
+			labelText:"{valueY}"
+		  })
+		}));
+		
+		series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5 });
+		series.columns.template.adapters.add("fill", function(fill, target) {
+		  return chart.get("colors").getIndex(series.columns.indexOf(target));
+		});
+		
+		series.columns.template.adapters.add("stroke", function(stroke, target) {
+		  return chart.get("colors").getIndex(series.columns.indexOf(target));
+		});
+		
+		
+		// Set data
+		// var data = [{
+		//   label: "USA",
+		//   value: 2025
+		// }, {
+		//   label: "China",
+		//   value: 1882
+		// }, {
+		//   label: "Japan",
+		//   value: 1809
+		// }, {
+		//   label: "Germany",
+		//   value: 1322
+		// }, {
+		//   label: "UK",
+		//   value: 1122
+		// }, {
+		//   label: "France",
+		//   value: 1114
+		// }, {
+		//   label: "India",
+		//   value: 984
+		// }, {
+		//   label: "Spain",
+		//   value: 711
+		// }, {
+		//   label: "Netherlands",
+		//   value: 665
+		// }, {
+		//   label: "Russia",
+		//   value: 580
+		// }, {
+		//   label: "South Korea",
+		//   value: 443
+		// }, {
+		//   label: "Canada",
+		//   value: 441
+		// }];
+		
+		xAxis.data.setAll(data);
+		series.data.setAll(data);
+		
+		
+		// Make stuff animate on load
+		// https://www.amcharts.com/docs/v5/concepts/animations/
+		series.appear(1000);
+		chart.appear(1000, 100);
+		
+		}); // end am5.ready()
+}
