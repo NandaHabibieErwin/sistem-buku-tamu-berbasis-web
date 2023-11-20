@@ -55,12 +55,13 @@
                                     <div class="mb-3">
                                         <label class="form-label" for="validationCustom04">Departement</label>
                                         <select class="form-control" data-trigger name="dept"
-                                            id="choices-single-default validationCustom04"
-                                            placeholder="" required>
+                                            id="choices-single-default validationCustom04" placeholder="" required>
                                             <option disable selected value>Pilih Departement</option>
-                                            <option value="Bidang Kesehatan Masyarakat Veteriner">Bidang Kesehatan Masyarakat Veteriner</option>
+                                            <option value="Bidang Kesehatan Masyarakat Veteriner">Bidang Kesehatan
+                                                Masyarakat Veteriner</option>
                                             <option value="Bidang Produksi Peternakan">Bidang Produksi Peternakan</option>
-                                            <option value="Bidang Agribisnis Peternakan">Bidang Agribisnis Peternakan</option>
+                                            <option value="Bidang Agribisnis Peternakan">Bidang Agribisnis Peternakan
+                                            </option>
                                             <option value="Bidang Keuangan">Bidang Keuangan</option>
                                             <option value="Bidang Kepegawaian Umum">Bidang Kepegawaian Umum</option>
                                             <option value="Bidang Kesehatan Hewan">Bidang Kesehatan Hewan</option>
@@ -72,23 +73,22 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label" for="validationCustom05">Tujuan</label>
-                                        <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" name="tujuan"
-                                            required>
+                                        <label class="form-label" for="validationCustom03">Waktu Kunjungan</label>
+                                        <input type="datetime-local" class="form-control" id="validationCustom03"
+                                            name="jadwal" placeholder="City" required>
                                         <div class="invalid-feedback">
-                                            Jelaskan tujuan anda mengunjungi departement
+                                            Masukkan waktu dengan benar
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <label class="form-label" for="validationCustom03">Waktu Kunjungan</label>
-                                        <input type="datetime-local" class="form-control" id="validationCustom03" name="jadwal"
-                                            placeholder="City" required>
+                                        <label class="form-label" for="validationCustom05">Tujuan</label>
+                                        <textarea class="form-control" id="validationCustom05" placeholder="Tujuan..." name="tujuan" required></textarea>
                                         <div class="invalid-feedback">
-                                            Masukkan waktu dengan benar
+                                            Jelaskan tujuan anda mengunjungi departemen
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-primary" type="submit">Submit form</button>
                         </form>
                     </div>
                 </div>

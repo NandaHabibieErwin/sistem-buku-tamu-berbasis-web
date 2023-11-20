@@ -7,7 +7,8 @@ File: invoive list  Js File
 */
 
 // Basic Table
-new gridjs.Grid({
+
+var grid = new gridjs.Grid({
 
     columns:
         [
@@ -27,7 +28,7 @@ new gridjs.Grid({
             {
                 name: 'Tujuan',
                 formatter: (function (cell, row) {
-                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#orderdetailsModal_' + row.cells[0].data + '">' + '<i class="bx bx-dots-horizontal-rounded"></i></button></div>');
+                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#TujuanTamu_' + row.cells[0].data + '">' + '<i class="bx bx-dots-horizontal-rounded"></i></button></div>');
                 })
             },
 
@@ -40,7 +41,7 @@ new gridjs.Grid({
 
                     const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateStatus(' + idTamu + ',' + 1 + ')"><i class="bx bx-check-double label-icon"></i>Terima</button>';
 
-                    const tolakButton = '<button type="button" data-bs-toggle="modal" data-bs-target=".add-new-order" class="btn btn-danger waves-effect btn-label waves-light" onclick="updateStatus(' + cell + ', 2)"><i class="bx bx-block label-icon"></i>Tolak</button>';
+                    const tolakButton = '<button type="button" data-bs-toggle="modal" data-bs-target=".tolak' + row.cells[0].data + '"" class="btn btn-danger waves-effect btn-label waves-light"><i class="bx bx-block label-icon"></i>Tolak</button>';
 
                     switch (cell) {
                         case 0:
@@ -132,8 +133,10 @@ function updateStatus(idTamu, newStatus) {
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+
         },
     })
+
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -142,11 +145,11 @@ function updateStatus(idTamu, newStatus) {
         })
         .then(data => {
             console.log(data);
-            // Reload the table or update the row as needed
-            // For example, you might want to refresh the data and re-render the table:
-            grid.refresh();
+            grid.refresh({ force: true });
+
         })
         .catch(error => {
             console.error('Error:', error);
         })
+
 };
