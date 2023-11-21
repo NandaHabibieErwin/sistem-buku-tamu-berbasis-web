@@ -127,29 +127,37 @@ function fixStepIndicator(n) {
     x[n].className += " active";
 }
 
+
 function updateStatus(idTamu, newStatus) {
+    var alasan = document.getElementById('productdesc'+idTamu).value;
+    if (alasan){
+        console.log("alasan terpanggil");
+    }
+    else{
+        console.log("tidak terpanggil");
+    }
+
     fetch('/whatsapp/' + idTamu + '/' + newStatus, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-
         },
+        body: JSON.stringify({ alasan: alasan }),
     })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('alasan: ' + alasan);
+        console.log(data);
+        grid.refresh({ force: true });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-            grid.refresh({ force: true });
-
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        })
-
-};

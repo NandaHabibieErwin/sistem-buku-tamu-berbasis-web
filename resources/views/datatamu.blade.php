@@ -61,16 +61,16 @@
         <!-- end modal -->
 
         @foreach ($data as $tamu)
-        <div class="modal fade tolak{{ $tamu->nama }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        <div class="modal fade tolak{{ $tamu->id_tamu }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myExtraLargeModalLabel">Alasan penolakan {{ $tamu->id_tamu }}</h5>
+                        <h5 class="modal-title" id="myExtraLargeModalLabel">Alasan penolakan {{ $tamu->nama }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <textarea class="form-control" id="productdesc" placeholder="Enter Description" rows="4"></textarea>
+                        <textarea name="alasan" class="form-control" id="productdesc{{ $tamu->id_tamu }}" placeholder="Alasan Menolak" rows="4"></textarea>
                         <div class="row mt-2">
                             <div class="col-12 text-end">
                                 <button type="button" class="btn btn-danger me-1" data-bs-dismiss="modal"><i

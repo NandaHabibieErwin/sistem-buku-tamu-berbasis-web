@@ -14,7 +14,4 @@ class tamuModel extends Model
     protected $table = 'bukutamu';
     protected $primaryKey = 'id_tamu';
     public $timestamps = true;
-    public function tamu(){
-
-    }
 }

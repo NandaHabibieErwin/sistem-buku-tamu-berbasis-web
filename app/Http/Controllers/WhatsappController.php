@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
-use App\Http\Controllers\tamuController;
 use App\Models\tamuModel;
 
 class WhatsappController extends Controller
 {
+    protected $twilio;
+    protected $twilioWhatsAppNumber;
+    protected $twilioSMSNumber;
 
-    public function sendWhatsAppMessage()
+    public function __construct()
     {
         $twilioSid = getenv("TWILIO_SID");
         $twilioToken = getenv("TWILIO_AUTH_TOKEN");
-        $twilioWhatsAppNumber = getenv('TWILIO_WHATSAPP_NUMBER');
-        $twilioSMSNumber = getenv('TWILIO_SMS_NUMBER');
-        $twilio = new Client($twilioSid, $twilioToken);
+        $this->twilioWhatsAppNumber = getenv('TWILIO_WHATSAPP_NUMBER');
+        $this->twilioSMSNumber = getenv('TWILIO_SMS_NUMBER');
+        $this->twilio = new Client($twilioSid, $twilioToken);
+    }
+
+    public function sendWhatsAppMessage()
+    {
 
         $nama = $_POST["nama"];
         $notelp = ltrim($_POST["notelp"], 0);
@@ -27,24 +33,23 @@ class WhatsappController extends Controller
 
         if ($sendto == 0) {
 
-            $message = $twilio->messages
+            $message = $this->twilio->messages
                 ->create(
                     "whatsapp:+62" . $notelp,
                     // to
                     array(
-                        "from" => $twilioWhatsAppNumber,
+                        "from" => $this->twilioWhatsAppNumber,
                         "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
                     )
                 );
         } elseif ($sendto == 1) {
-            # code...
 
-            $message = $twilio->messages
+            $message = $this->twilio->messages
                 ->create(
                     "+62" . $notelp,
                     // to
                     array(
-                        "from" => $twilioSMSNumber,
+                        "from" => $this->twilioSMSNumber,
                         "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
                     )
                 );
@@ -64,22 +69,72 @@ class WhatsappController extends Controller
     }
 
 
-    public function updateStatus($id_tamu, $newStatus) {
-        // Retrieve data from the database
+    public function updateStatus($id_tamu, $newStatus)
+    {
         $tamu = tamuModel::find($id_tamu);
+        $notelp = ltrim($tamu->notelp, 0);
+        $sendTo = $tamu->sendTo;
+        $alasan = request('alasan');
 
-        if (!$tamu) {
-            // Handle the case where the record is not found
-            return response()->json(['message' => 'Record not found'], 404);
+        if ($sendTo == 0) {
+            if ($newStatus == 1) {
+
+                $message = $this->twilio->messages
+                    ->create(
+                        "whatsapp:+62" . $notelp,
+                        // to
+                        array(
+                            "from" => $this->twilioWhatsAppNumber,
+                            "body" => "Permintaan kunjungan anda telah disetujui, silahkan berkunjung",
+                        )
+                    );
+
+            } elseif ($newStatus == 2) {
+                $message = $this->twilio->messages
+                    ->create(
+                        "whatsapp:+62" . $notelp,
+                        // to
+                        array(
+                            "from" => $this->twilioWhatsAppNumber,
+                            "body" => "Mohon Maaf, Permintaan kunjungan anda ditolak, dengan alasan: " . $alasan,
+                        )
+                    );
+            }
+
+        } elseif ($sendTo == 1) {
+            if ($newStatus == 1) {
+
+                $message = $this->twilio->messages
+                    ->create(
+                        "+62" . $notelp,
+                        // to
+                        array(
+                            "from" => $this->twilioSMSNumber,
+                            "body" => "Permintaan kunjungan anda telah disetujui, silahkan berkunjung",
+                        )
+                    );
+            } elseif ($newStatus == 2) {
+
+                $message = $this->twilio->messages
+                    ->create(
+                        "+62" . $notelp,
+                        // to
+                        array(
+                            "from" => $this->twilioSMSNumber,
+                            "body" => "Mohon Maaf, Permintaan kunjungan anda ditolak, dengan alasan: " . $alasan,
+                        )
+                    );
+            }
         }
 
-        // Update the status
         $tamu->status = $newStatus;
         $tamu->save();
 
-        // Continue with any additional logic as needed
 
-        // Send a response back to the client
+
+
+
         return response()->json(['message' => 'Status updated successfully']);
+
     }
 }
