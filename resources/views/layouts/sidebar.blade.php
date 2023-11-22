@@ -40,34 +40,36 @@
                         <span class="menu-item" data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
+                @guest()
+                    <li class="menu-title" data-key="t-applications">Tamu</li>
 
-                <li class="menu-title" data-key="t-applications">Tamu</li>
+                    <li>
+                        <a href="{{ route('bukutamu') }}">
+                            <i class="bx bx-file-find icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-filemanager">Buku Tamu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('department') }}">
+                            <i class="bx bx-user-circle icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-filemanager">Departement</span>
+                        </a>
+                    </li>
+                    @endguest
+                    @auth()
+                        <li class="menu-title" data-key="t-applications">Admin</li>
 
-                <li>
-                    <a href="{{ route('bukutamu') }}">
-                        <i class="bx bx-file-find icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-filemanager">Buku Tamu</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('department') }}">
-                    <i class="bx bx-user-circle icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-filemanager">Departement</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="{{ route('datatamu') }}">
+                                <i class="bx bx-file-find icon nav-icon"></i>
+                                <span class="menu-item" data-key="t-filemanager">Data Buku Tamu</span>
+                            </a>
+                        </li>
 
-                <li class="menu-title" data-key="t-applications">Admin</li>
-
-                <li>
-                    <a href="{{ route('datatamu') }}">
-                        <i class="bx bx-file-find icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-filemanager">Data Buku Tamu</span>
-                    </a>
-                </li>
-
-            </ul>
+                    </ul>
+                @endauth
+            </div>
+            <!-- Sidebar -->
         </div>
-        <!-- Sidebar -->
     </div>
-</div>
-<!-- Left Sidebar End -->
+    <!-- Left Sidebar End -->

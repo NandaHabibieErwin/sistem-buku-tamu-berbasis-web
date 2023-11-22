@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use App\Models\tamuModel;
+use App\Models\deptModel;
 
 class WhatsappController extends Controller
 {
@@ -65,7 +66,7 @@ class WhatsappController extends Controller
             'sendTo' => $sendto,
             'status' => 0,
         ]);
-        return redirect('/');
+
     }
 
 

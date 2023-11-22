@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notif', function (Blueprint $table) {
+        Schema::create('notifikasi', function (Blueprint $table) {
             $table->id('id_notif');
             $table->string('notifPost');
             $table->foreignId('id');

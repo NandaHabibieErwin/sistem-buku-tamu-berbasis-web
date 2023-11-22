@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_tamu');
             $table->string('nama');
             $table->string('notelp');
-            $table->string('dept');
+            $table->foreignId('id_departement');
             $table->text('tujuan');
             $table->timestamp('jadwal');
             $table->tinyInteger('sendTo')->defaultValue(0);

@@ -1,3 +1,7 @@
+<link href="{{ URL::asset('build/libs/alertifyjs/build/css/alertify.min.css') }}" rel="stylesheet" type="text/css" />
+
+<!-- alertifyjs default themes  Css -->
+<link href="{{ URL::asset('build/libs/alertifyjs/build/css/themes/default.min.css') }}" rel="stylesheet" type="text/css" />
 @extends('layouts.master')
 @section('title')
     Buku Tamu
@@ -39,8 +43,8 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="validationCustom02">Nomor telepon</label>
-                                        <input type="text" class="form-control" id="validationCustom02" name="notelp"
-                                            placeholder="08...." required>
+                                        <input type="number" maxlength="15" class="form-control" id="validationCustom02"
+                                            name="notelp" placeholder="08...." required>
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>
@@ -57,14 +61,9 @@
                                         <select class="form-control" data-trigger name="dept"
                                             id="choices-single-default validationCustom04" placeholder="" required>
                                             <option disable selected value>Pilih Departement</option>
-                                            <option value="Bidang Kesehatan Masyarakat Veteriner">Bidang Kesehatan
-                                                Masyarakat Veteriner</option>
-                                            <option value="Bidang Produksi Peternakan">Bidang Produksi Peternakan</option>
-                                            <option value="Bidang Agribisnis Peternakan">Bidang Agribisnis Peternakan
-                                            </option>
-                                            <option value="Bidang Keuangan">Bidang Keuangan</option>
-                                            <option value="Bidang Kepegawaian Umum">Bidang Kepegawaian Umum</option>
-                                            <option value="Bidang Kesehatan Hewan">Bidang Kesehatan Hewan</option>
+                                            @foreach ($data as $dept)
+                                            <option value="{{ $dept->id_departement }}">{{ $dept->nama_departement }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Pilih salah satu departement yang akan dikunjungi
@@ -114,7 +113,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-primary" id="buttons" type="submit">Submit form</button>
+                            <div class="spinner-border text-primary m-1" style="display: none;" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -135,14 +137,43 @@
         <script src="{{ URL::asset('build/js/pages/form-validation.init.js') }}"></script>
         <!-- App js -->
         <script src="{{ URL::asset('build/js/app.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+
+                $('form').submit(function(e) {
+                    e.preventDefault();
+                    $('#buttons').hide();
+                    $('.spinner-border').show();
+                    // Get form data
+                    var formData = new FormData(this);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ url('send-whatsapp') }}',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            console.log(response);
+                            $('#buttons').show();
+                            $('.spinner-border').hide();
+                            alertify.success('Berhasil, silahkan cek WA atau SMS anda');
+                            $('form')[0].reset();
+                        },
+                        error: function(error) {
+                            console.error(error);
+                            $('#buttons').show();
+                            $('.spinner-border').hide();
+                            alertify.error('Gagal, coba lagi');
+                        }
+                    });
+                });
+            });
+        </script>
     @endsection
 
     @section('css')
         <!-- alertifyjs Css -->
-        <link href="{{ URL::asset('build/libs/alertifyjs/build/css/alertify.min.css') }}" rel="stylesheet"
-            type="text/css" />
-
-        <!-- alertifyjs default themes  Css -->
-        <link href="{{ URL::asset('build/libs/alertifyjs/build/css/themes/default.min.css') }}" rel="stylesheet"
-            type="text/css" />
     @endsection
