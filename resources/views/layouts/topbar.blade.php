@@ -79,15 +79,14 @@
                     <button type="button" class="btn header-item user text-start d-flex align-items-center"
                         id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <img class="rounded-circle header-profile-user"
-                            src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt="Header Avatar">
+                        <i class='far fa-user-circle rounded-circle header-profile-user' style='font-size:36px'></i>
                         <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end pt-0">
                         <div class="p-3 border-bottom">
                             <h6 class="mb-0">{{ Auth::user()->name }}</h6>
                             <p class="mb-0 font-size-11 text-muted">{{ Auth::user()->email }}</p>
-                            <p class="mb-0 font-size-11 text-muted">Departement</p>
+                            <p class="mb-0 font-size-11 text-muted">{{ Auth::user()->departement->nama_departement }}</p>
                         </div>
                         <a class="dropdown-item" href="javascript:void();"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i

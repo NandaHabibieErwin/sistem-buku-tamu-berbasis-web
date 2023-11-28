@@ -13,16 +13,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+    Route::get('/bukutamu', [App\Http\Controllers\HomeController::class, 'index'])->name('bukutamu')->withoutMiddleware(['auth']);
+    Route::POST('/send-whatsapp', [WhatsappController::class, 'sendWhatsAppMessage'])->withoutMiddleware(['auth']);
+    Route::get('/department', 'App\Http\Controllers\DepartmentController@index')->name('department')->withoutMiddleware(['auth']);
 
-Route::withoutMiddleware(['auth'])->group(function () {
-    Route::get('/bukutamu', [App\Http\Controllers\HomeController::class, 'index'])->name('bukutamu');
-    Route::POST('/send-whatsapp', [WhatsappController::class, 'sendWhatsAppMessage']);
-    Route::get('/department', 'App\Http\Controllers\DepartmentController@index')->name('department');
-});
 
 Auth::routes();
 
-Route::get('/datatamu', [App\Http\Controllers\tamuController::class, 'index'])->name('datatamu');
+Route::get('/datatamu', [App\Http\Controllers\tamuController::class, 'index'])->name('datatamu')->middleware('auth');
 
 
 Route::get('/', function () {
@@ -31,8 +29,8 @@ Route::get('/', function () {
 
 
 
-Route::POST('/whatsapp/{id_tamu}/{new_status}', 'WhatsAppController@updateStatus');
-Route::POST('/whatsapp/{id_tamu}/{new_status}', [WhatsappController::class, 'updateStatus']);
+Route::POST('/whatsapp/{id_tamu}/{new_status}', 'WhatsAppController@updateStatus')->middleware('auth');
+Route::POST('/whatsapp/{id_tamu}/{new_status}', [WhatsappController::class, 'updateStatus'])->middleware('auth');
 
 
 Route::get('/menu', function () {
@@ -45,12 +43,6 @@ Route::resource('form', 'App\Http\Controllers\tamuController');
 Route::get('/menu', function () {
     return view('layout.menu');
 });
-
-
-Route::post('/update-status/{id}/{newStatus}', 'WhatsappController@updateStatus')->name('update.status');
-
-//Route::get('/datatamu', App);
-Auth::routes();
 
 
 

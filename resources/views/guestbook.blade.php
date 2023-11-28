@@ -62,7 +62,8 @@
                                             id="choices-single-default validationCustom04" placeholder="" required>
                                             <option disable selected value>Pilih Departement</option>
                                             @foreach ($data as $dept)
-                                            <option value="{{ $dept->id_departement }}">{{ $dept->nama_departement }}</option>
+                                                <option value="{{ $dept->id_departement }}">{{ $dept->nama_departement }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">

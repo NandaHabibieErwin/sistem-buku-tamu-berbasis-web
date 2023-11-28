@@ -11,7 +11,7 @@
     <link href="{{ URL::asset('build/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('page-title')
-    Data Tamu
+    Data Tamu {{ Auth::user()->departement->nama_departement }}
 @endsection
 @section('body')
 

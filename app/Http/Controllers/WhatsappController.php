@@ -60,7 +60,7 @@ class WhatsappController extends Controller
         tamuModel::create([
             'nama' => $nama,
             'notelp' => "0" . $notelp,
-            'dept' => $dept,
+            'id_departement' => $dept,
             'tujuan' => $tujuan,
             'jadwal' => $jadwal,
             'sendTo' => $sendto,

@@ -1,3 +1,6 @@
+@php
+    $data= DB::table('departement')->get();
+@endphp
 @extends('layouts.master-without-nav')
 @section('title')
     Register
@@ -19,9 +22,9 @@
 
                             <div class="mb-4 pb-2">
                                 <a href="index" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="30"
+                                    <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="80"
                                         class="auth-logo-dark me-start">
-                                    <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="30"
+                                    <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="80"
                                         class="auth-logo-light me-start">
                                 </a>
                             </div>
@@ -30,17 +33,17 @@
                                 <div class="card-body p-4">
                                     <div class="text-center mt-2">
                                         <h5>Register Account</h5>
-                                        <p class="text-muted">Get your free webadmin account now.</p>
                                     </div>
                                     <div class="p-2 mt-4">
                                         <form method="POST" action="{{ route('register') }}" class="auth-input">
                                             @csrf
                                             <div class="mb-2">
-                                                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                                <label for="name" class="form-label">Nama <span
+                                                        class="text-danger">*</span></label>
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
                                                     value="{{ old('name') }}" required autocomplete="name" autofocus
-                                                    placeholder="Enter name">
+                                                    placeholder="Masukkan Nama">
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -49,11 +52,12 @@
                                             </div>
 
                                             <div class="mb-2">
-                                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                                <label for="email" class="form-label">Email <span
+                                                        class="text-danger">*</span></label>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                                     value="{{ old('email') }}" required autocomplete="email"
-                                                    placeholder="Enter email">
+                                                    placeholder="Masukkan Email">
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -63,11 +67,12 @@
 
 
                                             <div class="mb-3">
-                                                <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="password-input">Password <span
+                                                        class="text-danger">*</span></label>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password" required id="password-input"
-                                                    placeholder="Enter password">
+                                                    placeholder="Masukkan Password minimal 8 karakter">
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -81,44 +86,29 @@
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password_confirmation" required id="password-confirm"
-                                                    placeholder="Enter confirm password">
+                                                    placeholder="Konfirmasi password">
                                             </div>
 
-                                            <div>
-                                                <p class="mb-0">By registering you agree to the Reactly <a href="#"
-                                                        class="text-primary">Terms of Use</a></p>
+                                            <div class="mb-2">
+                                                <label for="depart" class="form-label">Departement <span
+                                                        class="text-danger">*</span></label>
+                                                        <select class="form-control" data-trigger name="dept"
+                                                        id="choices-single-default validationCustom04" placeholder="" required>
+                                                        <option disable selected value>Pilih Departement</option>
+                                                        @foreach ($data as $dept)
+                                                            <option value="{{ $dept->id_departement }}">{{ $dept->nama_departement }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                @error('depart')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
 
                                             <div class="mt-4">
                                                 <button class="btn btn-primary w-100" type="submit">Register</button>
-                                            </div>
-
-
-                                            <div class="mt-4 text-center">
-                                                <div class="signin-other-title">
-                                                    <h5 class="font-size-14 mb-3 mt-2 title"> Sign in with </h5>
-                                                </div>
-
-                                                <ul class="list-inline mt-2">
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void()"
-                                                            class="social-list-item bg-primary text-white border-primary">
-                                                            <i class="bx bxl-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void()"
-                                                            class="social-list-item bg-info text-white border-info">
-                                                            <i class="bx bxl-linkedin"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void()"
-                                                            class="social-list-item bg-danger text-white border-danger">
-                                                            <i class="bx bxl-google"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
                                             </div>
 
                                             <div class="mt-4 text-center">
@@ -141,7 +131,7 @@
                                     <script>
                                         document.write(new Date().getFullYear())
                                     </script> webadmin. Crafted with <i
-                                        class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                        class="mdi mdi-heart text-danger"></i> by Nanda Habibie Erwin
                                 </p>
                             </div>
                         </div>

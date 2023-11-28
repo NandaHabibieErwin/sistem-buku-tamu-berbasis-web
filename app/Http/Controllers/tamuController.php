@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\tamuModel;
 
@@ -12,7 +12,7 @@ class tamuController extends Controller
      */
     public function index()
     {
-        $data = tamuModel::SELECT('id_tamu', 'nama', 'notelp', 'jadwal', 'tujuan', 'status')->get();
+        $data = tamuModel::SELECT('id_tamu', 'nama', 'notelp', 'jadwal', 'tujuan', 'status')->Where('id_departement', Auth::user()->departement->id_departement)->get();
         return view('datatamu',compact('data'));
     }
 

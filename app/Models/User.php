@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_departement',
     ];
 
     /**
@@ -38,4 +39,9 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+
+     public function departement()
+     {
+         return $this->belongsTo(deptModel::class, 'id_departement', 'id_departement');
+     }
 }
