@@ -1,6 +1,7 @@
 <?php
 
-    use App\Http\Controllers\WhatsappController;
+    use App\Http\Controllers\notifController;
+use App\Http\Controllers\WhatsappController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/datatamu', [App\Http\Controllers\tamuController::class, 'index'])->name('datatamu')->middleware('auth');
-
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
 Route::get('/', function () {
     return view('dashboard');
 });
+
 
 
 
@@ -36,6 +38,8 @@ Route::POST('/whatsapp/{id_tamu}/{new_status}', [WhatsappController::class, 'upd
 Route::get('/menu', function () {
     return view('layout.menu');
 });
+
+Route::post('/read', [notifController::class, 'markAsRead'])->name('read');
 
 
 Route::resource('form', 'App\Http\Controllers\tamuController');

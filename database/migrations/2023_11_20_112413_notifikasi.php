@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('notifikasi', function (Blueprint $table) {
             $table->id('id_notif');
+            $table->string('notifHead');
             $table->string('notifPost');
             $table->foreignId('id');
             $table->timestamps();
+            $table->integer('status')->defaultValue(0);
         });
+
+
     }
 
     /**
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('notifikasi');
     }
 };

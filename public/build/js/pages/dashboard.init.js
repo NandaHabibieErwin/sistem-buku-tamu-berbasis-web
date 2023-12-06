@@ -126,7 +126,7 @@ var sparklineoptions1 = {
       }
     }
   };
-  
+
   var sparklinechart1 = new ApexCharts(document.querySelector("#mini-2"), sparklineoptions1);
   sparklinechart1.render();
 
@@ -178,7 +178,7 @@ var barchartColors = getChartColorsArray("mini-3");
       }
     }
   };
-  
+
   var sparklinechart1 = new ApexCharts(document.querySelector("#mini-3"), sparklineoptions1);
   sparklinechart1.render();
 
@@ -186,7 +186,7 @@ var barchartColors = getChartColorsArray("mini-3");
   var barchartColors = getChartColorsArray("mini-4");
 var sparklineoptions1 = {
     series: [{
-      data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 70]
+      data: datatamu
     }],
     chart: {
       type: 'area',
@@ -230,16 +230,27 @@ var sparklineoptions1 = {
       }
     }
   };
-  
+
   var sparklinechart1 = new ApexCharts(document.querySelector("#mini-4"), sparklineoptions1);
   sparklinechart1.render();
 
-  
+  function generateDateLabels() {
+    var currentDate = new Date();
+    var dateLabels = [];
+
+    for (var i = 0; i < 7; i++) {
+        dateLabels.push(currentDate.toLocaleDateString('id-ID', { weekday: 'long' }));
+        currentDate.setDate(currentDate.getDate() - 1); // Move to the previous day
+    }
+
+    return dateLabels.reverse(); }
+
+
 //  Sales Statistics
 var barchartColors = getChartColorsArray("overview");
 var options = {
     series: [{
-        data: [4, 6, 10, 17, 15, 19, 23, 27, 29, 25, 32, 35]
+        data: Object.values(datatamu)
     }],
     chart: {
         toolbar: {
@@ -252,13 +263,13 @@ var options = {
             }
         }
     },
-   
+
     plotOptions: {
         bar: {
             columnWidth: '80%',
             distributed: true,
             borderRadius: 8,
-           
+
         }
     },
 
@@ -267,7 +278,7 @@ var options = {
     },
 
     stroke: {
-      show: false, 
+      show: false,
     },
     dataLabels: {
         enabled: false,
@@ -277,7 +288,7 @@ var options = {
     },
     colors: barchartColors,
     xaxis: {
-        categories: ['Jan', 'Feb','Mar','Apr','May', 'jun', 'Jul','Aug', 'Sep', 'Oct','Nov', 'Dec'],
+        categories: generateDateLabels(),
     }
 };
 
@@ -292,9 +303,9 @@ var options = {
   chart: {
       height: 350,
       type: 'donut',
-  }, 
-  series: [24, 18, 13, 15],
-  labels: ["Fashion", "Beauty", "Clothing", "Others"],
+  },
+  series: totals,
+  labels: departements,
   colors: barchartColors,
   plotOptions: {
         pie: {
@@ -305,8 +316,8 @@ var options = {
               show: true,
               total: {
                 show: true,
-                label: 'Products',
-                fontSize: '22px',
+                label: 'Kunjungan',
+                fontSize: '16px',
                 fontFamily: 'Montserrat,sans-serif',
                 fontWeight: 600,
               }
@@ -323,7 +334,7 @@ var options = {
       floating: false,
       fontSize: '14px',
       offsetX: 0,
-      
+
   },
 
   dataLabels: {
@@ -333,7 +344,7 @@ var options = {
           fontWeight: 'bold',
           colors: undefined
          },
-    
+
         background: {
           enabled: true,
           foreColor: '#fff',
@@ -356,12 +367,12 @@ var options = {
       }
   }]
   }
-  
+
   var chart = new ApexCharts(
   document.querySelector("#saleing-categories"),
   options
   );
-  
+
   chart.render();
 
 // world map with markers

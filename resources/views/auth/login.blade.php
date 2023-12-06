@@ -41,56 +41,53 @@
                                                 <div class="position-relative auth-pass-inputgroup input-custom-icon">
                                                     <span class="fa fa-envelope"></span>
                                                     <input id="email" type="email"
-                                                        class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email"
-                                                        name="email" value="{{ old('email') }}" required
-                                                        autocomplete="email" autofocus value="admin@themesbrand.com">
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        placeholder="Enter Email" name="email" value="{{ old('email') }}"
+                                                        required autocomplete="email" autofocus
+                                                        value="admin@themesbrand.com">
                                                     @error('email')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                </div>
+                                            </div>
 
-                                                <div class="mb-3">
-                                                    <!--                                                <div class="float-end">
-                                                        <a href="{{ route('password.update') }}"
-                                                            class="text-muted text-decoration-underline">Forgot password?</a>
-                                                    </div> -->
-                                                    <label class="form-label" for="password-input">Password <span
-                                                            class="text-danger">*</span></label>
-                                                    <div class="position-relative auth-pass-inputgroup input-custom-icon">
-                                                        <span class="bx bx-lock-alt"></span>
-                                                        <input type="password"
-                                                            class="form-control @error('password') is-invalid @enderror"
-                                                            placeholder="Enter password" id="password-input" name="password"
-                                                            required autocomplete="current-password">
-                                                        <button type="button"
-                                                            class="btn btn-link position-absolute h-100 end-0 top-0"
-                                                            id="password-addon">
-                                                            <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
-                                                        </button>
-                                                    </div>
-                                                    @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                            <div class="mb-3">
+                                                <label class="form-label" for="password-input">Password <span
+                                                        class="text-danger">*</span></label>
+                                                <div class="position-relative auth-pass-inputgroup input-custom-icon">
+                                                    <span class="bx bx-lock-alt"></span>
+                                                    <input type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        placeholder="Enter password" id="password-input" name="password"
+                                                        required autocomplete="current-password">
+                                                    <button type="button"
+                                                        class="btn btn-link position-absolute h-100 end-0 top-0"
+                                                        id="password-addon">
+                                                        <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
+                                                    </button>
                                                 </div>
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="remember"
-                                                        id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="remember">Ingat Saya</label>
-                                                </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="remember"
+                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="remember">Ingat Saya</label>
+                                            </div>
 
-                                                <div class="mt-4">
-                                                    <button class="btn btn-primary w-100" type="submit">Login</button>
-                                                </div>
-                                                <div class="mt-4 text-center">
-                                                    <p class="mb-0">Belum punya akun? <a href="{{ route('register') }}"
-                                                            class="fw-medium text-primary"> Register</a></p>
-                                                </div>
+                                            <div class="mt-4">
+                                                <button class="btn btn-primary w-100" type="submit">Login</button>
+                                            </div>
+                                            <div class="mt-4 text-center">
+                                                <p class="mb-0">Belum punya akun? <a href="{{ route('register') }}"
+                                                        class="fw-medium text-primary"> Register</a></p>
+                                            </div>
                                         </form>
                                     </div>
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use App\Models\tamuModel;
 use App\Models\deptModel;
+use App\Models\notifModel;
+use App\Models\User;
 
 class WhatsappController extends Controller
 {
@@ -42,7 +44,7 @@ class WhatsappController extends Controller
                         "from" => $this->twilioWhatsAppNumber,
                         "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
                     )
-                );
+                        );
         } elseif ($sendto == 1) {
 
             $message = $this->twilio->messages
@@ -54,8 +56,6 @@ class WhatsappController extends Controller
                         "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
                     )
                 );
-
-
         }
         tamuModel::create([
             'nama' => $nama,
@@ -67,6 +67,17 @@ class WhatsappController extends Controller
             'status' => 0,
         ]);
 
+        $userDept = User::where('id_departement', $dept)->first();
+
+        if($userDept){
+        notifModel::create([
+            'notifHead' => "Kunjungan",
+            'notifPost' => "Ada tamu yang ingin berkunjung",
+            'id' => $userDept->id,
+            'created_at' => now(),
+            'status' => 0,
+        ]);
+    }
     }
 
 

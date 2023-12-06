@@ -31,30 +31,34 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
-            <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu">Dashboard</li>
 
-                <li>
-                    <a href="{{ url('/') }}">
-                        <i class="bx bx-home-alt icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-dashboard">Dashboard</span>
-                    </a>
-                </li>
-                @guest()
-                    <li class="menu-title" data-key="t-applications">Tamu</li>
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    @auth()
+                    <li class="menu-title" data-key="t-menu">Dashboard</li>
 
                     <li>
-                        <a href="{{ route('bukutamu') }}">
-                            <i class="bx bx-file-find icon nav-icon"></i>
-                            <span class="menu-item" data-key="t-filemanager">Buku Tamu</span>
+                        <a href="{{ route('dashboard') }}">
+                            <i class="bx bx-home-alt icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-dashboard">Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('department') }}">
-                            <i class="bx bx-user-circle icon nav-icon"></i>
-                            <span class="menu-item" data-key="t-filemanager">Departement</span>
-                        </a>
-                    </li>
+                    @endauth
+                    @guest()
+                        <li class="menu-title" data-key="t-applications">Tamu</li>
+
+                        <li>
+                            <a href="{{ route('bukutamu') }}">
+                                <i class="bx bx-file-find icon nav-icon"></i>
+                                <span class="menu-item" data-key="t-filemanager">Buku Tamu</span>
+                            </a>
+                        </li>
+                        <li class="menu-title" data-key="t-applications">Departement</li>
+                        <li>
+                            <a href="{{ route('department') }}">
+                                <i class="bx bx-user-circle icon nav-icon"></i>
+                                <span class="menu-item" data-key="t-filemanager">Departement</span>
+                            </a>
+                        </li>
                     @endguest
                     @auth()
                         <li class="menu-title" data-key="t-applications">Admin</li>

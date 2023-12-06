@@ -19,8 +19,12 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
     <!-- topbar -->
+@auth
     @include('layouts.topbar')
-
+@endauth
+@guest
+    @include('layouts.topbarGuest')
+@endguest
     <!-- sidebar components -->
     @include('layouts.sidebar')
     @include('layouts.horizontal')

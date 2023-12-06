@@ -33,15 +33,17 @@
             <!-- end page title -->
 
         </div>
+        @auth
+            <div class="d-flex">
 
-        <div class="d-flex">
-            @auth()
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown-v"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-bell icon-sm align-middle"></i>
-                    <span class="noti-dot bg-danger rounded-pill">4</span>
-                </button>
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown-v"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-bell icon-sm align-middle"></i>
+                        @if ($count > 0)
+                            <span id="notifa" class="noti-dot bg-danger rounded-pill">{{ $count }}</span>
+                        @endif
+                    </button>
 
                     <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0"
                         aria-labelledby="page-header-notifications-dropdown-v">
@@ -51,28 +53,81 @@
                                     <h5 class="m-0 font-size-15"> Notifications </h5>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#!" class="small fw-semibold text-decoration-underline"> Mark all as
-                                        read</a>
+                                    <a href="javascript:void(0);" id="read"
+                                        class="small fw-semibold text-decoration-underline"> Mark all as read</a>
                                 </div>
                             </div>
                         </div>
-                        <div data-simplebar style="max-height: 250px;">
-                            <a href="#!" class="text-reset notification-item">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0 me-3">
-                                        <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}"
-                                            class="rounded-circle avatar-sm" alt="user-pic">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted font-size-13 mb-0 float-end">1 hour ago</p>
-                                        <h6 class="mb-1">James Lemire</h6>
-                                        <div>
-                                            <p class="mb-0">It will seem like simplified English.</p>
+                        @forelse ($notif as $hourlyGroup)
+                            <div data-simplebar style="max-height: 250px;">
+
+                                @php
+                                    $notificationsCount = count($hourlyGroup);
+                                    $latestNotification = $hourlyGroup->first(); // Get the latest notification in the group
+                                @endphp
+
+                                @if ($notificationsCount > 1)
+                                    <a href="#!" class="text-reset notification-item">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <i class='fas fa-portrait rounded-circle avatar-sm' style='font-size:36px'></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted font-size-13 mb-0 float-end">
+                                                    @php
+                                                        $createdAt = $latestNotification->created_at;
+                                                        $diff = now()->diffInDays($createdAt);
+                                                        $diffText = $diff === 1 ? 'kemarin' : $createdAt->diffForHumans();
+                                                    @endphp
+                                                    {{ $diffText }}
+                                                </p>
+                                                <h6 class="mb-1">
+                                                    {{ \Carbon\Carbon::parse($hourlyGroup[0]->created_at)->format('H:00') }}
+                                                    -
+                                                    {{ \Carbon\Carbon::parse($hourlyGroup[0]->created_at)->addHour()->format('H:00') }}
+                                                </h6>
+                                                <div>
+                                                    <p class="mb-0">Ada {{ $notificationsCount }} tamu yang ingin
+                                                        berkunjung</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                    </a>
+                                @else
+                                    @foreach ($hourlyGroup as $notification)
+                                        <a href="#!" class="text-reset notification-item">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <i class='fas fa-portrait rounded-circle avatar-sm' style='font-size:36px'></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted font-size-13 mb-0 float-end">
+                                                        @php
+                                                            $createdAt = $notification->created_at;
+                                                            $diff = now()->diffInDays($createdAt);
+                                                            $diffText = $diff === 1 ? 'kemarin' : $createdAt->diffForHumans();
+                                                        @endphp
+                                                        {{ $diffText }}
+                                                    </p>
+                                                    <h6 class="mb-1">
+                                                        {{ \Carbon\Carbon::parse($hourlyGroup[0]->created_at)->format('H:00') }}
+                                                        -
+                                                        {{ \Carbon\Carbon::parse($hourlyGroup[0]->created_at)->addHour()->format('H:00') }}
+                                                    </h6>
+                                                    <div>
+                                                        <p class="mb-0">{{ $notification->notifPost }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @endif
+                            </div>
+                        @empty
+                            <p class="mb-0">
+                                <center>Tidak Ada Kunjungan</center>
+                            </p>
+                        @endforelse
                     </div>
                 </div>
                 <div class="dropdown d-inline-block">
@@ -97,7 +152,34 @@
                         </form>
                     </div>
                 </div>
-                @endauth
+
             </div>
         </div>
     </header>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+@endauth
+<script>
+    $(document).ready(function() {
+        $('#read').click(function(e) {
+            e.preventDefault();
+            console.log('Clicked Mark All as Read');
+            $.ajax({
+                url: "{{ route('read') }}",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    // Handle success response
+                    console.log(response);
+                    $('#notifa').hide();
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>

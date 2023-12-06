@@ -39,7 +39,12 @@
     @endsection
     @section('scripts')
         <!-- Card Masonry -->
+        <script src="{{ URL::asset('build/js/app.js') }}"></script>
         <script src="{{ URL::asset('build/libs/masonry-layout/masonry.pkgd.min.js') }}"></script>
         <!-- App js -->
         <script src="{{ URL::asset('build/js/app.js') }}"></script>
     @endsection
+
+    @section('css')
+    <!-- alertifyjs Css -->
+@endsection

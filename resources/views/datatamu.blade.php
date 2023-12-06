@@ -117,6 +117,7 @@
         </script>
 
         <!-- gridjs js -->
+        <script src="{{ URL::asset('build/js/app.js') }}"></script>
         <script src="{{ URL::asset('build/libs/gridjs/gridjs.umd.js') }}"></script>
 
         <!-- flatpickr js -->

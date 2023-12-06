@@ -126,7 +126,7 @@ var sparklineoptions1 = {
       }
     }
   };
-  
+
   var sparklinechart1 = new ApexCharts(document.querySelector("#mini-2"), sparklineoptions1);
   sparklinechart1.render();
 
@@ -178,7 +178,7 @@ var barchartColors = getChartColorsArray("mini-3");
       }
     }
   };
-  
+
   var sparklinechart1 = new ApexCharts(document.querySelector("#mini-3"), sparklineoptions1);
   sparklinechart1.render();
 
@@ -230,16 +230,16 @@ var sparklineoptions1 = {
       }
     }
   };
-  
+
   var sparklinechart1 = new ApexCharts(document.querySelector("#mini-4"), sparklineoptions1);
   sparklinechart1.render();
 
-  
+
 //  Sales Statistics
 var barchartColors = getChartColorsArray("overview");
 var options = {
     series: [{
-        data: [4, 6, 10, 17, 15, 19, 23, 27, 29, 25, 32, 35]
+        data: notif,
     }],
     chart: {
         toolbar: {
@@ -252,13 +252,13 @@ var options = {
             }
         }
     },
-   
+
     plotOptions: {
         bar: {
             columnWidth: '80%',
             distributed: true,
             borderRadius: 8,
-           
+
         }
     },
 
@@ -267,7 +267,7 @@ var options = {
     },
 
     stroke: {
-      show: false, 
+      show: false,
     },
     dataLabels: {
         enabled: false,
@@ -292,7 +292,7 @@ var options = {
   chart: {
       height: 350,
       type: 'donut',
-  }, 
+  },
   series: [24, 18, 13, 15],
   labels: ["Fashion", "Beauty", "Clothing", "Others"],
   colors: barchartColors,
@@ -323,7 +323,7 @@ var options = {
       floating: false,
       fontSize: '14px',
       offsetX: 0,
-      
+
   },
 
   dataLabels: {
@@ -333,7 +333,7 @@ var options = {
           fontWeight: 'bold',
           colors: undefined
          },
-    
+
         background: {
           enabled: true,
           foreColor: '#fff',
@@ -356,12 +356,12 @@ var options = {
       }
   }]
   }
-  
+
   var chart = new ApexCharts(
   document.querySelector("#saleing-categories"),
   options
   );
-  
+
   chart.render();
 
 // world map with markers

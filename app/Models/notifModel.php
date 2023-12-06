@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class notifModel extends Model
 {
-    use HasFactory;
+
+        use HasFactory;
+        protected $fillable = ['id_notif', 'notifHead', 'notifPost', 'id', 'created_at', 'updated_at', 'status'];
+        protected $table = 'notifikasi';
+        protected $primaryKey = 'id_notif';
+            public $timestamps = true;
+
+        public function user()
+        {
+            return $this->belongsTo(User::class, 'id', 'id');
+        }
+
 }

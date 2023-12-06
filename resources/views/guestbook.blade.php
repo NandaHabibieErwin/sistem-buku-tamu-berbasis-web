@@ -40,6 +40,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <style>
+                                      input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+                                    input[type="number"]::-webkit-inner-spin-button,
+                                    input[type="number"]::-webkit-outer-spin-button {
+                                      -webkit-appearance: none;
+                                      margin: 0;
+                                    }
+
+                                </style>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="validationCustom02">Nomor telepon</label>
@@ -82,6 +93,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                                // Get the current date and time in the format expected by datetime-local input
+                                const currentDate = new Date().toISOString().slice(0, 16);
+
+                                // Set the min attribute of the datetime input
+                                document.getElementById('validationCustom03').min = currentDate;
+                              </script>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="mb-3">
@@ -114,7 +132,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" id="buttons" type="submit">Submit form</button>
+                            <button class="btn btn-primary" id="buttons" type="submit">Kirim</button>
                             <div class="spinner-border text-primary m-1" style="display: none;" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
