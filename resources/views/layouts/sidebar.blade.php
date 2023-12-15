@@ -55,7 +55,7 @@
                         <li class="menu-title" data-key="t-applications">Departement</li>
                         <li>
                             <a href="{{ route('department') }}">
-                                <i class="bx bx-user-circle icon nav-icon"></i>
+                                <i class="fas fa-building icon nav-icon"></i>
                                 <span class="menu-item" data-key="t-filemanager">Departement</span>
                             </a>
                         </li>

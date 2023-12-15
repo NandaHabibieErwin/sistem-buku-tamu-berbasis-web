@@ -11,15 +11,13 @@ use Illuminate\Contracts\Auth\Guard;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class AppServiceProvider extends ServiceProvider
-{
+class AppServiceProvider extends ServiceProvider {
     /**
      * Register any application services.
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //
     }
 
@@ -28,19 +26,15 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Guard $guard)
-    {
-      //  DB::table('notifikasi')
-      //  ->where('created_at', '<', now()->toDateString())
-      //  ->update(['status' => 1]);
+    public function boot(Guard $guard) {
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');
         View::composer('layouts.topbar', function ($view) {
             $count = notifModel::where('id', Auth::user()->id)
-            ->where('status', 0)
-            ->where('created_at', '<', now()->toDateString())
-            ->count();
+                ->where('status', 0)
+                ->where('created_at', '<', now())
+                ->count();
             $notif = notifModel::where('id', Auth::user()->id)
                 ->whereDate('created_at', now()->format('Y-m-d'))
                 ->orderBy('created_at', 'desc')

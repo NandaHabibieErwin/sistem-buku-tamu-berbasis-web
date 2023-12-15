@@ -28,7 +28,7 @@ var grid = new gridjs.Grid({
             {
                 name: 'Tujuan',
                 formatter: (function (cell, row) {
-                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#TujuanTamu_' + row.cells[0].data + '">' + '<i class="bx bx-dots-horizontal-rounded"></i></button></div>');
+                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#TujuanTamu_' + row.cells[0].data + '">' + '<i class="fa fa-eye"></i></button></div>');
                 })
             },
 

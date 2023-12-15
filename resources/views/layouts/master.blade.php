@@ -26,6 +26,7 @@
     @include('layouts.topbarGuest')
 @endguest
     <!-- sidebar components -->
+
     @include('layouts.sidebar')
     @include('layouts.horizontal')
 

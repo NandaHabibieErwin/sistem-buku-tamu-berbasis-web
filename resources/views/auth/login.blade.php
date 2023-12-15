@@ -18,7 +18,7 @@
                         <div class="col-md-8 col-lg-6 col-xl-5">
 
                             <div class="mb-4 pb-2">
-                                <a href="index" class="d-block auth-logo">
+                                <a href="/" class="d-block auth-logo">
                                     <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="80"
                                         class="auth-logo-dark me-start">
                                     <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="80"
@@ -45,12 +45,12 @@
                                                         placeholder="Enter Email" name="email" value="{{ old('email') }}"
                                                         required autocomplete="email" autofocus
                                                         value="admin@themesbrand.com">
+                                                </div>
                                                     @error('email')
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
+                                                            <strong>Email anda Salah</strong>
                                                         </span>
                                                     @enderror
-                                                </div>
                                             </div>
 
                                             <div class="mb-3">

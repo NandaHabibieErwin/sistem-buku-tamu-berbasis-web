@@ -21,7 +21,7 @@
                         <div class="col-md-8 col-lg-6 col-xl-5">
 
                             <div class="mb-4 pb-2">
-                                <a href="index" class="d-block auth-logo">
+                                <a href="/" class="d-block auth-logo">
                                     <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="80"
                                         class="auth-logo-dark me-start">
                                     <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="80"
@@ -32,7 +32,7 @@
                             <div class="card">
                                 <div class="card-body p-4">
                                     <div class="text-center mt-2">
-                                        <h5>Register Account</h5>
+                                        <h5>Register Akun</h5>
                                     </div>
                                     <div class="p-2 mt-4">
                                         <form method="POST" action="{{ route('register') }}" class="auth-input">
@@ -112,7 +112,7 @@
                                             </div>
 
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Already have an account ? <a href="{{ route('login') }}"
+                                                <p class="mb-0">Sudah punya akun ? <a href="{{ route('login') }}"
                                                         class="fw-medium text-primary"> Login</a></p>
                                             </div>
                                         </form>

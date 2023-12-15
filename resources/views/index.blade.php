@@ -26,7 +26,7 @@
 
                     <div>
                         <div id="overview"
-                            data-colors='["#1f58c7", "#1f58c7", "#e6ecf9","#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9","#e6ecf9","#e6ecf9","#1f58c7","#1f58c7", "#1f58c7"]'
+                            data-colors='["#1f58c7", "#1f58c7", "#1f58c7","#1f58c7", "#1f58c7", "#1f58c7","#1f58c7","#1f58c7","#1f58c7","#1f58c7","#1f58c7", "#1f58c7"]'
                             class="apex-chart"></div>
                     </div>
                 </div>
