@@ -137,7 +137,7 @@ class WhatsappController extends Controller
                         )
                     );
             }
-        }
+        } 
 
         $tamu->status = $newStatus;
         $tamu->save();

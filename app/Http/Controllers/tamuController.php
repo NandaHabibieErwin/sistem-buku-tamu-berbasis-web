@@ -12,7 +12,8 @@ class tamuController extends Controller
      */
     public function index()
     {
-        $data = tamuModel::SELECT('id_tamu', 'nama', 'notelp', 'jadwal', 'tujuan', 'status')->Where('id_departement', Auth::user()->departement->id_departement)->get();
+        $data = tamuModel::SELECT('id_tamu', 'nama', 'notelp', 'jadwal', 'tujuan', 'status')
+        ->Where('id_departement', Auth::user()->departement->id_departement)->orderBy('created_at')->get();
         return view('datatamu',compact('data'));
     }
 

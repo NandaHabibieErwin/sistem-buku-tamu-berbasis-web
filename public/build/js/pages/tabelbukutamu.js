@@ -154,7 +154,16 @@ function updateStatus(idTamu, newStatus) {
     .then(data => {
         console.log('alasan: ' + alasan);
         console.log(data);
-        grid.refresh({ force: true });
+        datatamu.forEach(row => {
+            if (row.id === idTamu) {
+                row.status = newStatus;
+            }
+        });
+
+        // Update the grid with the new data
+        grid.updateConfig({ data: datatamu.map(row => Object.values(row)) });
+        grid.forceRender();
+
     })
     .catch(error => {
         console.error('Error:', error);
