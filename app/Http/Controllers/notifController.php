@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\notifModel;
 use Illuminate\Support\Facades\Auth;
-
+//
 class notifController extends Controller
 {
     public function markAsRead()
