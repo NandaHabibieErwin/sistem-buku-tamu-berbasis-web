@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/datatamu', [App\Http\Controllers\tamuController::class, 'index'])->name('datatamu')->middleware('auth');
+Route::get('/print', [App\Http\Controllers\tamuController::class, 'print'])->name('print')->middleware('auth');
+Route::get('/pdf', [App\Http\Controllers\tamuController::class, 'pdf'])->name('pdf')->middleware('auth');
+Route::get('/csv', [App\Http\Controllers\tamuController::class, 'csv'])->name('csv')->middleware('auth');
+Route::get('/excel', [App\Http\Controllers\tamuController::class, 'excel'])->name('excel')->middleware('auth');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
 Route::get('/', function () {
@@ -48,5 +52,6 @@ Route::get('/menu', function () {
     return view('layout.menu');
 });
 
+Route::get('/clearPrintFlag', 'tamuController@clearPrintFlag')->name('clearPrintFlag');
 
 

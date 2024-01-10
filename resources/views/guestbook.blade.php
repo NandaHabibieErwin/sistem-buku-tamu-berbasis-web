@@ -25,7 +25,8 @@
                             konfirmasi akan dikirim melalui WhatsApp atau SMS</p>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('send-whatsapp') }}" method="post" class="needs-validation" novalidate>
+                        <form action="{{ url('send-whatsapp') }}" method="post" enctype="multipart/form-data"
+                            class="needs-validation" novalidate>
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -42,15 +43,16 @@
                                     </div>
                                 </div>
                                 <style>
-                                      input[type="number"] {
-    -moz-appearance: textfield; /* Firefox */
-  }
-                                    input[type="number"]::-webkit-inner-spin-button,
-                                    input[type="number"]::-webkit-outer-spin-button {
-                                      -webkit-appearance: none;
-                                      margin: 0;
+                                    input[type="number"] {
+                                        -moz-appearance: textfield;
+                                        /* Firefox */
                                     }
 
+                                    input[type="number"]::-webkit-inner-spin-button,
+                                    input[type="number"]::-webkit-outer-spin-button {
+                                        -webkit-appearance: none;
+                                        margin: 0;
+                                    }
                                 </style>
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -100,7 +102,7 @@
 
                                 // Set the min attribute of the datetime input
                                 document.getElementById('validationCustom03').min = currentDate;
-                              </script>
+                            </script>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="mb-3">
@@ -116,24 +118,78 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" id="invalidCheck" type="radio" name="sendto"
+                                            <input class="form-check-input" id="whatsappCheck" type="radio" name="sendto"
                                                 value="0" required>
-                                            <label class="form-check-label" for="invalidCheck">Kirim konfirmasi ke
+                                            <label class="form-check-label" for="whatsappCheck">Kirim konfirmasi ke
                                                 Whatsapp</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="invalidCheck" name="sendto"
+                                            <input class="form-check-input" id="smsCheck" type="radio" name="sendto"
                                                 value="1" required>
-                                            <label class="form-check-label" for="invalidCheck">Kirim konfirmasi ke
-                                                SMS</label>
+                                            <label class="form-check-label" for="smsCheck">Kirim konfirmasi ke SMS</label>
+                                            <div class="invalid-feedback">
+                                                Pilih salah satu
+                                            </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="noVerificationCheck" type="radio"
+                                                name="sendto" value="5" required>
+                                            <label class="form-check-label" for="noVerificationCheck">Tanpa
+                                                Verifikasi</label>
                                             <div class="invalid-feedback">
                                                 Pilih salah satu
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <button type="button" data-bs-toggle="modal" id="FotoTamuButton"
+                                            data-bs-target="#FotoTamu"
+                                            class="btn
+                                            btn-outline-danger waves-effect btn-label waves-light"><i
+                                                class="fa fa-camera"></i>
+                                            Scan Wajah</button>
+                                        <!--  <div id="results"></div> -->
+                                    </div>
+                                </div>
                             </div>
-                            <button class="btn btn-primary" id="buttons" type="submit">Kirim</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="FotoTamu" tabindex="-1" role="dialog"
+                                aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="orderdetailsModalLabel">Pastikan wajah ditengah
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div id="my_camera" style="position: relative;">
+                                                <div id="center-indicator"
+                                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="foto" id="validationCustom06"
+                                                class="image-tag">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="button" class="btn btn-info" data-bs-dismiss="modal"
+                                                value="Foto" id="capture" onClick="take_snapshot()">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- end modal -->
+
+                            <input type="reset" class="btn btn-danger w-md" id="buttones"
+                                onclick="resetButtonClicked()" type="submit">
+                            <button class="btn btn-primary w-md" id="buttons" type="submit">Kirim</button>
                             <div class="spinner-border text-primary m-1" style="display: none;" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
@@ -158,13 +214,40 @@
         <!-- App js -->
         <script src="{{ URL::asset('build/js/app.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+        <script language="JavaScript"></script>
         <script>
+            Webcam.set({
+                width: 490,
+                height: 350,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+            });
+
+            Webcam.attach('#my_camera');
+
+            function take_snapshot() {
+                Webcam.snap(function(data_uri) {
+                    $(".image-tag").val(data_uri);
+                    $('#results').html('<img src="' + data_uri + '"/>');
+
+                    // Update button properties
+                    $('#FotoTamuButton').removeClass('btn-outline-danger').addClass('btn-outline-success').prop(
+                        'disabled', true).html(
+                        '<i class="fa fa-check"></i> Foto Dikirim');
+
+                    // Close the modal
+                    $('#FotoTamu').modal('hide');
+                });
+            }
+
+
             $(document).ready(function() {
 
                 $('form').submit(function(e) {
                     e.preventDefault();
                     $('#buttons').hide();
+                    $('#buttones').hide();
                     $('.spinner-border').show();
                     // Get form data
                     var formData = new FormData(this);
@@ -178,19 +261,38 @@
                         success: function(response) {
                             console.log(response);
                             $('#buttons').show();
+                            $('#buttones').show();
                             $('.spinner-border').hide();
-                            alertify.success('Berhasil, silahkan cek WA atau SMS anda');
-                            $('form')[0].reset();
+                            if (response.success) {
+                                alertify.success(response.message);
+                                $('form')[0].reset();
+                            } else {
+                                alertify.error(response.message);
+                                $('#FotoTamuButton').removeClass('btn-success').addClass(
+                                    'btn-outline-danger').prop('disabled', false).html(
+                                    '<i class="fa fa-camera"></i> Scan Wajah');
+                            }
                         },
                         error: function(error) {
                             console.error(error);
                             $('#buttons').show();
+                            $('#buttones').show();
                             $('.spinner-border').hide();
-                            alertify.error('Gagal, coba lagi');
+                            alertify.error('Gagal, coba lagi, pastikan data terisi dengan benar');
+                            //     $('#FotoTamuButton').removeClass('btn-success').addClass(
+                            //          'btn-danger').prop('disabled', false).html(
+                            //          '<i class="fa fa-camera"></i> Kirim Foto');
+
                         }
                     });
                 });
             });
+
+            function resetButtonClicked() {
+                $('#FotoTamuButton').removeClass('btn-outline-success').addClass('btn-outline-danger').prop('disabled', false)
+                    .html(
+                        '<i class="fa fa-camera"></i> Kirim Foto');
+            }
         </script>
     @endsection
 

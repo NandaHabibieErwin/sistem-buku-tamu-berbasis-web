@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_departement');
             $table->text('tujuan');
             $table->timestamp('jadwal');
+            $table->binary('foto') ;
             $table->tinyInteger('sendTo')->defaultValue(0);
             $table->tinyInteger('status')->defaultValue(0);
             $table->timestamps();

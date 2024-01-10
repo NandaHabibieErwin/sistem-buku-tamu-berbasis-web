@@ -10,7 +10,7 @@ class notifController extends Controller
 {
     public function markAsRead()
     {
-        notifModel::where('id', Auth::user()->id)->update(['status' => 1]);
+        notifModel::where('id', Auth::user()->id)->delete();
         return response()->json(['success' => true]);
     }
 }

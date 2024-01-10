@@ -8,6 +8,7 @@ use App\Models\tamuModel;
 use App\Models\deptModel;
 use App\Models\notifModel;
 use App\Models\User;
+use Arhey\FaceDetection\Facades\FaceDetection;
 
 class WhatsappController extends Controller
 {
@@ -24,60 +25,82 @@ class WhatsappController extends Controller
         $this->twilio = new Client($twilioSid, $twilioToken);
     }
 
-    public function sendWhatsAppMessage()
+    public function sendWhatsAppMessage(Request $request)
     {
 
-        $nama = $_POST["nama"];
-        $notelp = ltrim($_POST["notelp"], 0);
-        $dept = $_POST["dept"];
-        $tujuan = $_POST["tujuan"];
-        $jadwal = $_POST["jadwal"];
-        $sendto = $_POST["sendto"];
+        $nama = $request->input("nama");
+        $notelp = ltrim($request->input("notelp"), 0);
+        $dept = $request->input("dept");
+        $tujuan = $request->input("tujuan");
+        $jadwal = $request->input("jadwal");
+        $sendto = $request->input("sendto");
+        $base64Image = $request->input('foto');
 
-        if ($sendto == 0) {
+        $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64Image));
 
-            $message = $this->twilio->messages
-                ->create(
-                    "whatsapp:+62" . $notelp,
-                    // to
-                    array(
-                        "from" => $this->twilioWhatsAppNumber,
-                        "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
-                    )
-                        );
-        } elseif ($sendto == 1) {
+        $tempFilePath = tempnam(sys_get_temp_dir(), 'img');
+        file_put_contents($tempFilePath, $imageData);
+        $face = FaceDetection::extract($tempFilePath);
 
-            $message = $this->twilio->messages
-                ->create(
-                    "+62" . $notelp,
-                    // to
-                    array(
-                        "from" => $this->twilioSMSNumber,
-                        "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
-                    )
-                );
+        if ($face->found) {
+            if ($sendto == 0) {
+
+                $message = $this->twilio->messages
+                    ->create(
+                        "whatsapp:+62" . $notelp,
+                        // to
+                        array(
+                            "from" => $this->twilioWhatsAppNumber,
+                            "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
+                        )
+                    );
+            } elseif ($sendto == 1) {
+
+                $message = $this->twilio->messages
+                    ->create(
+                        "+62" . $notelp,
+                        // to
+                        array(
+                            "from" => $this->twilioSMSNumber,
+                            "body" => "Permintaan kunjungan anda telah kami terima, mohon menunggu konfirmasi dari admin",
+                        )
+                    );
+            }
+            tamuModel::create([
+                'nama' => $nama,
+                'notelp' => "0" . $notelp,
+                'id_departement' => $dept,
+                'tujuan' => $tujuan,
+                'jadwal' => $jadwal,
+                'sendTo' => $sendto,
+                'status' => 0,
+                'foto' => $base64Image,
+            ]);
+
+            $userDept = User::where('id_departement', $dept)->first();
+
+            if ($userDept) {
+                notifModel::create([
+                    'notifHead' => "Kunjungan",
+                    'notifPost' => "Ada tamu yang ingin berkunjung",
+                    'id' => $userDept->id,
+                    'created_at' => now(),
+                    'status' => 0,
+                ]);
+            }
+
+            $response = [
+                'success' => true,
+                'message' => 'Berhasil, silahkan cek WA atau SMS anda',
+            ];
+
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Wajah tidak terdeteksi. Silakan foto dengan wajah yang jelas.',
+            ];
         }
-        tamuModel::create([
-            'nama' => $nama,
-            'notelp' => "0" . $notelp,
-            'id_departement' => $dept,
-            'tujuan' => $tujuan,
-            'jadwal' => $jadwal,
-            'sendTo' => $sendto,
-            'status' => 0,
-        ]);
-
-        $userDept = User::where('id_departement', $dept)->first();
-
-        if($userDept){
-        notifModel::create([
-            'notifHead' => "Kunjungan",
-            'notifPost' => "Ada tamu yang ingin berkunjung",
-            'id' => $userDept->id,
-            'created_at' => now(),
-            'status' => 0,
-        ]);
-    }
+        return response()->json($response);
     }
 
 
@@ -87,6 +110,7 @@ class WhatsappController extends Controller
         $notelp = ltrim($tamu->notelp, 0);
         $sendTo = $tamu->sendTo;
         $alasan = request('alasan');
+
 
         if ($sendTo == 0) {
             if ($newStatus == 1) {
@@ -137,7 +161,7 @@ class WhatsappController extends Controller
                         )
                     );
             }
-        } 
+        }
 
         $tamu->status = $newStatus;
         $tamu->save();

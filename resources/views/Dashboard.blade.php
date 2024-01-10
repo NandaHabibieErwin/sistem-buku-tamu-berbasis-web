@@ -3,32 +3,32 @@
     <div class="showcase-top">
         <div style="display: flex; align-items: center;">
             <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt=""
-                 style="width: 50px; height: auto; margin-top: 10px;" />
+                style="width: 50px; height: auto; margin-top: 10px;" />
         </div>
 
         @guest
             <a href="{{ route('login') }}" class="btn btn-rounded">Login as Admin</a>
         @endguest
         @auth
-        <a href="{{ route('logout') }}" class="btn btn-rounded">Logout</a>
-        <a class="btn btn-rounded" href="javascript:void();"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span
-                                class="align-middle">Logout</span></a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-    @endauth
+            <a href="{{ route('logout') }}" class="btn btn-rounded">Logout</a>
+            <a class="btn btn-rounded" href="javascript:void();"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span
+                    class="align-middle">Logout</span></a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @endauth
     </div>
     <div class="showcase-content">
         <h1>Dinas Peternakan & Kesehatan Hewan</h1>
         <p>Sistem Buku Tamu Berbasis Web</p>
         @auth
-        <div class="text-center">
-            <div class="d-flex justify-content-center">
-                <a class="btn btn-xl btn-block me-3" href="{{ route('dashboard') }}">Dashboard</a>
-                <a class="btn btn-xl btn-block me-3" href="{{ route('datatamu') }}">Data Tamu</a>
+            <div class="text-center">
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-xl btn-block me-3" href="{{ route('dashboard') }}">Dashboard</a>
+                    <a class="btn btn-xl btn-block me-3" href="{{ route('datatamu') }}">Data Tamu</a>
+                </div>
             </div>
-        </div>
 
         @endauth
         @guest

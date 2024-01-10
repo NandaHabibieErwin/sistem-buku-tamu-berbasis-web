@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tamuModel extends Model {
     use HasFactory;
-    protected $fillable = ['id_tamu', 'nama', 'notelp', 'id_departement', 'tujuan', 'jadwal', 'sendTo', 'status'];
+    protected $fillable = ['id_tamu', 'nama', 'notelp', 'id_departement', 'tujuan', 'jadwal', 'sendTo', 'status', 'foto'];
     protected $table = 'bukutamu';
     protected $primaryKey = 'id_tamu';
     public $timestamps = true;

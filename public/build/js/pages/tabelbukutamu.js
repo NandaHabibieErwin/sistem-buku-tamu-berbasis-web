@@ -13,7 +13,7 @@ var grid = new gridjs.Grid({
     columns:
         [
             {
-                name: 'No',
+                name: 'ID',
                 formatter: (function (cell) {
                     return gridjs.html('<span class="fw-semibold">' + cell + '</span>');
                 })
@@ -32,6 +32,13 @@ var grid = new gridjs.Grid({
                 })
             },
 
+            {
+                name: 'Foto',
+                formatter: (function (cell, row) {
+                    return gridjs.html('<div class="dropdown"><button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#FotoTamu_' + row.cells[0].data + '">' + '<i class="fa fa-camera"></i></button></div>');
+                })
+            },
+
 
             {
                 name: 'Status',
@@ -39,7 +46,7 @@ var grid = new gridjs.Grid({
 
                     const idTamu = row.cells[0].data;
 
-                    const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateStatus(' + idTamu + ',' + 1 + ')"><i class="bx bx-check-double label-icon"></i>Terima</button>';
+                     const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateAndChangeStatus(' + idTamu + ',' + 1 + ')"><i class="bx bx-check-double label-icon"></i>Terima</button>';
 
                     const tolakButton = '<button type="button" data-bs-toggle="modal" data-bs-target=".tolak' + row.cells[0].data + '"" class="btn btn-danger waves-effect btn-label waves-light"><i class="bx bx-block label-icon"></i>Tolak</button>';
 
@@ -64,8 +71,18 @@ var grid = new gridjs.Grid({
     },
     sort: true,
     search: true,
-    data: datatamu.map(row => Object.values(row)),
+
+    data: () => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                const transformedData = datatamu.map(row => Object.values(row));
+                resolve(transformedData);
+            }, 1000);
+        });
+    }
+
 }).render(document.getElementById("table-invoices-list"));
+
 
 
 // Range datepicker
@@ -127,6 +144,38 @@ function fixStepIndicator(n) {
     x[n].className += " active";
 }
 
+function updateAndChangeStatus(idTamu, newStatus) {
+    // Make an asynchronous request to update the status on the server
+    // After the request is successful, update the status in the DOM
+
+    // For example:
+    // Assume you have an API endpoint for updating the status
+    fetch('/updateStatus', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            idTamu: idTamu,
+            newStatus: newStatus,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the status in the DOM immediately
+            const statusElement = document.getElementById('status_' + idTamu);
+            if (statusElement) {
+                statusElement.innerHTML = '<span class="badge badge-pill badge-soft-success font-size-12">Disetujui</span>';
+            }
+        } else {
+            console.error('Failed to update status.');
+        }
+    })
+    .catch(error => {
+        console.error('Error updating status:', error);
+    });
+}
 
 function updateStatus(idTamu, newStatus) {
     var alasan = document.getElementById('productdesc'+idTamu).value;
@@ -154,19 +203,16 @@ function updateStatus(idTamu, newStatus) {
     .then(data => {
         console.log('alasan: ' + alasan);
         console.log(data);
-        datatamu.forEach(row => {
-            if (row.id === idTamu) {
-                row.status = newStatus;
-            }
-        });
+        grid.updateConfig({
+            data: datatamu.map(row => Object.values(row)),
+        }).forceRender();
 
         // Update the grid with the new data
-        grid.updateConfig({ data: datatamu.map(row => Object.values(row)) });
-        grid.forceRender();
 
     })
     .catch(error => {
         console.error('Error:', error);
     });
 }
+
 
