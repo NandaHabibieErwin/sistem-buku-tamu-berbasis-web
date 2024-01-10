@@ -46,7 +46,7 @@ var grid = new gridjs.Grid({
 
                     const idTamu = row.cells[0].data;
 
-                     const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateAndChangeStatus(' + idTamu + ',' + 1 + ')"><i class="bx bx-check-double label-icon"></i>Terima</button>';
+                    const terimaButton = '<button type="button" class="btn btn-success waves-effect btn-label waves-light" onclick="updateStatus(' + idTamu + ',' + 1 + ')"><i class="bx bx-check-double label-icon"></i>Terima</button>';
 
                     const tolakButton = '<button type="button" data-bs-toggle="modal" data-bs-target=".tolak' + row.cells[0].data + '"" class="btn btn-danger waves-effect btn-label waves-light"><i class="bx bx-block label-icon"></i>Tolak</button>';
 
